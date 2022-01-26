@@ -19,24 +19,27 @@ require'lualine'.setup {
     theme = 'tokyonight'
     },
   sections = {
-    lualine_a = { "mode", "paste" },
+    lualine_a = {
+      "mode"
+    },
     lualine_b = {
-      { "branch", icon = "" },
-      { "diff", color_added = {fg = "#a7c080" }, color_modified = {fg = "#ffdf1b" }, color_removed = {fg = "#ff6666" }  }
+      {
+        "branch",
+        icon = ""
+      },
+      "diff"
     },
     lualine_c = {
-      { "diagnostics", sources = { "nvim_diagnostic" } },
-      function()
-        return "%="
-      end,
-      "filename",
-      { getWords },
+      "diagnostics",
+      "lsp_progress",
     },
-    lualine_x = { "filetype" },
+    lualine_x = {
+      "encoding",
+      "filename",
+      "filetype"
+    },
     lualine_y = {
-      {
         "progress",
-      },
     },
     lualine_z = {
       {

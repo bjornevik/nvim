@@ -121,6 +121,7 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'rebelot/kanagawa.nvim',
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'arkav/lualine-lsp-progress'
 Plug 'akinsho/bufferline.nvim'
 Plug 'stevearc/dressing.nvim'
 Plug 'p00f/nvim-ts-rainbow'
