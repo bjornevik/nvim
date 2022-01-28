@@ -3,15 +3,30 @@ local fb_actions = require"telescope".extensions.file_browser.actions
 
 require("telescope").setup({
   defaults = {
-    file_sorter = require("telescope.sorters").get_fzy_sorter,
+    prompt_prefix = " > ",
+    color_devicons = true,
+    path_display = { "truncate" },
+    border = {},
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    winblend = 0,
+    layout_config = {
+      horizontal = {
+        preview_width = 0.55,
+        results_width = 0.8,
+      },
+      width = 0.87,
+      height = 0.8,
+      preview_cutoff = 120,
+    },
+
+    file_sorter = require("telescope.sorters").get_fuzzy_file,
+    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     file_ignore_patterns = {".DS_Store","flipper/.*", "gcloud/.*", "gopass/.*",
       "iterm2/.*", "plugged/.*", "undodir/.*", "*/frontend-ui-tests/.*",
       "node_modules/.*", "coc/.*", "automatic_backups/.*", "build/.*", "android/.*",
       "ios/.*", "Google/.*", "google%-chrome/.*", "pulse/.*", "evolution/.*", "menus/.*",
       ".git/.*", ".dart_tool/.*"
     },
-    prompt_prefix = " > ",
-    color_devicons = true,
 
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
