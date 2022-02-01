@@ -109,6 +109,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'danymat/neogen'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'

@@ -9,8 +9,9 @@ nnoremap <silent> gbi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 inoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>nf <cmd>Neoformat<CR>
+nnoremap <silent> <leader>ng <cmd>lua require('neogen').generate()<CR>
 
 nnoremap <silent> gr <cmd>TroubleToggle lsp_references<CR>
 nnoremap <silent> <C-q> <cmd>TroubleToggle quickfix<CR>
