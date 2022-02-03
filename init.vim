@@ -119,8 +119,8 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 " Appearance
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'rebelot/kanagawa.nvim',
+Plug 'marko-cerovac/material.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'arkav/lualine-lsp-progress'
 Plug 'akinsho/bufferline.nvim'

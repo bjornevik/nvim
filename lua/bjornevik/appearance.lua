@@ -1,22 +1,10 @@
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-
--- vim.cmd[[colorscheme tokyonight]]
-vim.cmd[[colorscheme kanagawa]]
-
-require('kanagawa').setup {
-  overrides = {
-    Visual = {
-      bg = require('kanagawa.colors').sakuraPink,
-      fg = require('kanagawa.colors').bg,
-    }
-  }
-}
+vim.cmd[[colorscheme material]]
 
 -- LUALINE
 require'lualine'.setup {
   options = {
-    theme = 'kanagawa'
+    -- theme = 'kanagawa'
+    theme = 'material'
     },
   sections = {
     lualine_a = {
@@ -55,3 +43,14 @@ require("bufferline").setup{}
 
 -- NVIM-COLORIZER
 require("colorizer").setup()
+
+-- INDENT BLANKLINE
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+
+require("indent_blankline").setup{
+  show_first_indent_level = false,
+  use_treesitter = true,
+  show_current_context = true,
+  space_char_blankline = " "
+}
