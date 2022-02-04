@@ -1,4 +1,5 @@
 lspconfig = require'lspconfig'
+require"fidget".setup{}
 
 -- LSP settings
 local on_attach = function(client, bufnr)

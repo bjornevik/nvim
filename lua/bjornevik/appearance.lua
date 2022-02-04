@@ -19,7 +19,6 @@ require'lualine'.setup {
     },
     lualine_c = {
       "diagnostics",
-      "lsp_progress",
     },
     lualine_x = {
       "encoding",
