@@ -69,7 +69,8 @@ Plug 'ggandor/lightspeed.nvim'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Utilty
 Plug 'ThePrimeagen/refactoring.nvim'
