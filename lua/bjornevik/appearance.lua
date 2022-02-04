@@ -37,8 +37,13 @@ require'lualine'.setup {
   },
 }
 
--- BUFFERLINE
-require("bufferline").setup{}
+-- tabline
+require("tabline").setup{
+  enable = true,
+  options = {
+    show_filename_only = true,
+  }
+}
 
 -- NVIM-COLORIZER
 require("colorizer").setup()
