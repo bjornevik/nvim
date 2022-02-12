@@ -32,52 +32,47 @@ lspconfig.pyright.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.vimls.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.vuels.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.hls.setup{on_attach=on_attach, capabilities=capabilities}
-lspconfig.tsserver.setup{on_attach=on_attach, capabilities=capabilities} -- try new tsserver setup
-
 lspconfig.rust_analyzer.setup{
   on_attach=on_attach,
   capabilities=capabilities,
   cmd = { "rustup", "run", "nightly", "rust-analyzer"}
 }
 
--- old tsserver setup because react sucks
--- lspconfig.tsserver.setup{
---   capabilities=capabilities,
-  -- on_attach = function(client)
-  --   client.resolved_capabilities.document_formatting = false
-  --   on_attach(client)
-  -- end,
-  -- handlers = {
-  --   ["textDocument/definition"] = function (_, results, params)
-  --     if results == nil or vim.tbl_isempty(results) then
-  --       local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, 'No location found')
-  --       return nil
-  --     end
-  --
-  --     if vim.tbl_islist(results) then
-  --       vim.lsp.util.jump_to_location(results[1])
-  --       if #results > 1 then
-  --         local isReactDTs = false
-  --
-  --         for _, result in pairs(results) do
-  --           if string.match(result.uri, "react/index.d.ts") then
-  --             isReactDTs = true
-  --             break
-  --           end
-  --         end
-  --
-  --         if not isReactDTs then
-  --           vim.lsp.util.set_qflist(util.locations_to_items(results))
-  --           vim.api.nvim_command("copen")
-  --           vim.api.api.nvim_command("wincmd p")
-  --         end
-  --       end
-  --     else
-  --       vim.lsp.util.jump_to_location(results)
-  --     end
-  --   end
-  -- }
--- }
+-- tsserver specific setup
+-- https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
+local function filter(arr, fn)
+  if type(arr) ~= "table" then
+    return arr
+  end
+
+  local filtered = {}
+  for k, v in pairs(arr) do
+    if fn(v, k, arr) then
+      table.insert(filtered, v)
+    end
+  end
+
+  return filtered
+end
+
+local function filterReactDTS(value)
+  return string.match(value.uri, 'react/index.d.ts') == nil
+end
+
+lspconfig.tsserver.setup{
+  on_attach=on_attach,
+  capabilities=capabilities,
+  handlers = {
+    ['textDocument/definition'] = function(err, result, method, ...)
+      if vim.tbl_islist(result) and #result > 1 then
+        local filtered_result = filter(result, filterReactDTS)
+        return vim.lsp.handlers['textDocument/definition'](err, filtered_result, method, ...)
+      end
+
+      vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
+    end
+  }
+}
 
 require("flutter-tools").setup{
   widget_guides = {
