@@ -51,16 +51,7 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
-  ensure_installed = {
-    "tsx",
-    "json",
-    "vue",
-    "go",
-    "lua",
-    "html",
-    "css",
-    "python"
-  },
+  ensure_installed = "maintained",
   rainbow = {
     enable = true,
     extended_mode = true,
@@ -73,8 +64,9 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.js = "typescript"
+  ft_to_parser.jsx = "tsx"
 
 require('neogen').setup {
   enabled = true
