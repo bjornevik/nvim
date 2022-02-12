@@ -27,3 +27,6 @@ set colorcolumn=80
 set splitright
 set lazyredraw
 set termguicolors
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']

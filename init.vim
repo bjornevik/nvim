@@ -136,6 +136,12 @@ call plug#end()
 lua require("bjornevik")
 lua require('Comment').setup()
 xmap gs <Plug>VSurround
+nnoremap <silent> <leader>nf <cmd>Neoformat<CR>
+nnoremap <silent> <leader>ng <cmd>lua require('neogen').generate()<CR>
+nnoremap <silent> <C-q> <cmd>TroubleToggle quickfix<CR>
+nnoremap <silent> <leader>q <cmd>TroubleToggle document_diagnostics<CR>
+nnoremap <silent> <C-j> <cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>
+nnoremap <silent> <C-k> <cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>
 
 " Autocommands
 augroup JBJORNEVIK
@@ -143,4 +149,7 @@ augroup JBJORNEVIK
   autocmd! InsertEnter * norm zz
   autocmd! BufWritePre * %s/\s\+$//e
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, border='rounded'})
+  " autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="line", focusable=false, border='rounded'})
+  autocmd BufWritePre * undojoin | Neoformat
 augroup end
