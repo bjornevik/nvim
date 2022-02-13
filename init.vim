@@ -148,7 +148,7 @@ augroup JBJORNEVIK
   autocmd!
   autocmd! InsertEnter * norm zz
   autocmd! BufWritePre * %s/\s\+$//e
-  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd FileType * setlocal formatoptions-=o
   autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, border='rounded'})
   " autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="line", focusable=false, border='rounded'})
   autocmd BufWritePre * undojoin | Neoformat
