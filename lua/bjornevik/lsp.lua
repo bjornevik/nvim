@@ -20,6 +20,7 @@ end
 
 require "lsp_signature".setup({
   floating_window = true,
+  floating_window_above_cur_lines = true,
   doc_lines = 0,
   always_trigger = true
 })

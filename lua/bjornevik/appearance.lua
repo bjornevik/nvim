@@ -56,7 +56,8 @@ require("indent_blankline").setup{
   show_first_indent_level = false,
   use_treesitter = true,
   show_current_context = true,
-  space_char_blankline = " "
+  space_char_blankline = " ",
+  filetype_exclude = { 'dashboard' }
 }
 
 -- GITSIGNS
@@ -77,3 +78,34 @@ require('gitsigns').setup {
     map('n', '<leader>gd', gs.diffthis)
   end
 }
+
+-- dashboard-nvim
+local g = vim.g
+g.dashboard_default_executive ='telescope'
+g.dashboard_custom_section = {
+    a = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
+    b = {description = {"  File Browser              SPC f b"}, command = "Telescope file_browser"},
+    c = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles" },
+    d = {description = {"  Find String               SPC f s"}, command = "Telescope live_grep"},
+    e = {description = {"  Harpoon                   SPC h m"}, command = "lua require('harpoon.ui').toggle_quick_menu()"},
+    f = {description = {"  Nvim Config               SPC vrc"}, command = "lua require('bjornevik.telescope').search_dotfiles()"},
+}
+g.dashboard_custom_footer = {'type :help<Enter>'}
+g.dashboard_custom_header = {
+   "                                   ",
+   "                                   ",
+   "                                   ",
+   "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
+   "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
+   "          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
+   "           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
+   "          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
+   "   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
+   "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
+   " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
+   " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
+   "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
+   "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
+   "                                   ",
+}
+

@@ -122,6 +122,7 @@ Plug 'ThePrimeagen/harpoon'
 
 " Appearance
 Plug 'marko-cerovac/material.nvim'
+Plug 'glepnir/dashboard-nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kdheepak/tabline.nvim'
