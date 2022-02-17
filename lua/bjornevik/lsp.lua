@@ -33,10 +33,21 @@ lspconfig.pyright.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.vimls.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.vuels.setup{on_attach=on_attach, capabilities=capabilities}
 lspconfig.hls.setup{on_attach=on_attach, capabilities=capabilities}
-lspconfig.rust_analyzer.setup{
-  on_attach=on_attach,
-  capabilities=capabilities,
-  cmd = { "rustup", "run", "nightly", "rust-analyzer"}
+require("flutter-tools").setup{
+  widget_guides = {
+    enabled = true,
+  },
+  lsp = {
+    on_attach=on_attach,
+    capabilities = capabilities,
+  }
+}
+require("rust-tools").setup{
+  server = {
+    on_attach=on_attach,
+    capabilities = capabilities,
+    cmd = { "rustup", "run", "nightly", "rust-analyzer"}
+  }
 }
 
 -- tsserver specific setup
@@ -74,18 +85,6 @@ lspconfig.tsserver.setup{
     end
   }
 }
-
-require("flutter-tools").setup{
-  widget_guides = {
-    enabled = true,
-  },
-  lsp = {
-    on_attach=on_attach,
-    capabilities = capabilities,
-  }
-}
-
-require("rust-tools").setup({})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.lsp.diagnostic.on_publish_diagnostics, {
