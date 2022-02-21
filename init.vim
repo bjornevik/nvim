@@ -92,6 +92,7 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'j-hui/fidget.nvim'
+Plug 'folke/lua-dev.nvim'
 
 " Autocomplete
 Plug 'hrsh7th/nvim-cmp'

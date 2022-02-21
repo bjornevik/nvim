@@ -1,4 +1,4 @@
-lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 require("fidget").setup({})
 
 -- LSP settings
@@ -25,23 +25,15 @@ require("lsp_signature").setup({
 	always_trigger = true,
 })
 
-capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.gopls.setup({ on_attach = on_attach, capabilities = capabilities })
 lspconfig.bashls.setup({ on_attach = on_attach, capabilities = capabilities })
 lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 lspconfig.vimls.setup({ on_attach = on_attach, capabilities = capabilities })
 lspconfig.vuels.setup({ on_attach = on_attach, capabilities = capabilities })
 lspconfig.hls.setup({ on_attach = on_attach, capabilities = capabilities })
-require("flutter-tools").setup({
-	widget_guides = {
-		enabled = true,
-	},
-	lsp = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	},
-})
+require("flutter-tools").setup({ lsp = { on_attach = on_attach, capabilities = capabilities } })
+
 require("rust-tools").setup({
 	server = {
 		on_attach = on_attach,
@@ -49,6 +41,29 @@ require("rust-tools").setup({
 		cmd = { "rustup", "run", "nightly", "rust-analyzer" },
 	},
 })
+
+-- lua specific setup
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+local luadev = require("lua-dev").setup({
+	lspconfig = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				path = runtime_path,
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	},
+})
+require("lspconfig").sumneko_lua.setup(luadev)
 
 -- tsserver specific setup
 -- https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
