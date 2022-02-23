@@ -78,7 +78,7 @@ require("gitsigns").setup({
 		map("n", "<leader>gd", gs.diffthis)
 	end,
 })
-vim.api.nvim_set_keymap("n", "<leader>gs", ":G<CR>", {}) -- fugitive.vim
+vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>") -- fugitive.vim
 
 -- dashboard-nvim
 local g = vim.g

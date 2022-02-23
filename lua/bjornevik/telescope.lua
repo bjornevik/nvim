@@ -89,56 +89,51 @@ M.search_dotfiles = function()
 end
 
 -- Telescope remaps
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>ff",
 	"<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>",
 	{ noremap = true }
 )
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>fb",
 	"<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>",
 	{ noremap = true }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>tb", "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
 
-vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>fs", "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>bf",
 	"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
 	{ noremap = true }
 )
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>fo",
 	"<cmd>lua require('telescope.builtin').oldfiles({ hidden = true })<CR>",
 	{ noremap = true }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').git_files()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').git_files()<CR>", { noremap = true })
 
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>vrc",
-	"<cmd>lua require('bjornevik.telescope').search_dotfiles()<CR>",
-	{ noremap = true }
-)
+vim.keymap.set("n", "<leader>vrc", "<cmd>lua require('bjornevik.telescope').search_dotfiles()<CR>", { noremap = true })
 
 -- Plugin specific remaps
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"v",
 	"<leader>rr",
 	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
 	{ noremap = true }
 )
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>fl",
 	"<Esc><cmd>lua require('telescope').extensions.flutter.commands()<CR>",
