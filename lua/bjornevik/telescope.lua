@@ -53,7 +53,6 @@ require("telescope").setup({
 			i = {
 				["<C-x>"] = false,
 				["<C-q>"] = actions.send_to_qflist,
-				-- ["<Esc>"] = actions.close,
 			},
 		},
 	},
@@ -77,6 +76,7 @@ require("telescope").setup({
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("flutter")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("refactoring")
 
 local M = {}
 M.search_dotfiles = function()
@@ -86,5 +86,63 @@ M.search_dotfiles = function()
 		hidden = true,
 	})
 end
+
+-- Telescope remaps
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>ff",
+	"<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>",
+	{ noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>fb",
+	"<cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>",
+	{ noremap = true }
+)
+
+vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>bf",
+	"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
+	{ noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>fo",
+	"<cmd>lua require('telescope.builtin').oldfiles({ hidden = true })<CR>",
+	{ noremap = true }
+)
+
+vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').git_files()<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>vrc",
+	"<cmd>lua require('bjornevik.telescope').search_dotfiles()<CR>",
+	{ noremap = true }
+)
+
+-- Plugin specific remaps
+require("refactoring").setup({})
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>rr",
+	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+	{ noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>fl",
+	"<Esc><cmd>lua require('telescope').extensions.flutter.commands()<CR>",
+	{ noremap = true }
+)
 
 return M
