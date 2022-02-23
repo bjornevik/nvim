@@ -76,6 +76,7 @@ require("telescope").setup({
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("flutter")
 require("telescope").load_extension("file_browser")
+require("refactoring").setup({})
 require("telescope").load_extension("refactoring")
 
 local M = {}
@@ -130,7 +131,6 @@ vim.api.nvim_set_keymap(
 )
 
 -- Plugin specific remaps
-require("refactoring").setup({})
 vim.api.nvim_set_keymap(
 	"v",
 	"<leader>rr",

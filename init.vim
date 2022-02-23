@@ -113,6 +113,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'danymat/neogen'
+Plug 'ThePrimeagen/jvim.nvim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'

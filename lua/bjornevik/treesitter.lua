@@ -34,11 +34,6 @@ require("nvim-treesitter.configs").setup({
 					["[m"] = "@function.outer",
 					["[["] = "@class.outer",
 				},
-
-				goto_previous_start = {
-					["[M"] = "@function.outer",
-					["[]"] = "@class.outer",
-				},
 			},
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.vim
@@ -71,3 +66,9 @@ ft_to_parser.jsx = "tsx"
 require("neogen").setup({
 	enabled = true,
 })
+
+-- TODO: Move to autocmd when nvim_set_autocmd is added
+vim.api.nvim_set_keymap("n", "<up>", "<cmd>lua require('jvim').prev_sibling()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<down>", "<cmd>lua require('jvim').next_sibling()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<left>", "<cmd>lua require('jvim').to_parent()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<right>", "<cmd>lua require('jvim').descend()<CR>", { noremap = true })
