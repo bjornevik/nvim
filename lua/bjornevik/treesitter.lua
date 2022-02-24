@@ -66,9 +66,3 @@ ft_to_parser.jsx = "tsx"
 require("neogen").setup({
 	enabled = true,
 })
-
--- TODO: Move to autocmd when nvim_set_autocmd is added
-vim.keymap.set("n", "<up>", "<cmd>lua require('jvim').prev_sibling()<CR>", { noremap = true })
-vim.keymap.set("n", "<down>", "<cmd>lua require('jvim').next_sibling()<CR>", { noremap = true })
-vim.keymap.set("n", "<left>", "<cmd>lua require('jvim').to_parent()<CR>", { noremap = true })
-vim.keymap.set("n", "<right>", "<cmd>lua require('jvim').descend()<CR>", { noremap = true })
