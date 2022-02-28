@@ -5,49 +5,48 @@ lua << EOF
 vim.g.mapleader = " "
 EOF
 
+lua << EOF
+-- Copies and Pastes
+vim.keymap.set("n", '<leader>y', '"+y', { noremap = true })
+vim.keymap.set("v", '<leader>y', '"+y', { noremap = true })
+vim.keymap.set("n", '<leader>Y', '"+Y', { noremap = true })
+vim.keymap.set("n", '<leader>p', '"+p', { noremap = true })
+vim.keymap.set("n", '<leader>P', '"+P', { noremap = true })
 
-" Copies and Pastes
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
+-- Keep it centered
+vim.keymap.set("n", 'n', 'nzzzv', { noremap = true })
+vim.keymap.set("n", 'N', 'Nzzzv', { noremap = true })
 
-"" Keep it centered
-nnoremap n nzzzv
-nnoremap N Nzzzv
+-- Moving text
+vim.keymap.set("v", '<M-j>', ":m '>+1<CR>gv=gv", { noremap = true })
+vim.keymap.set("v", '<M-k>', ":m '<-2<CR>gv=gv", { noremap = true })
+vim.keymap.set("n", '<M-j>', ":m .+1<CR>==", { noremap = true })
+vim.keymap.set("n", '<M-k>', ":m .-2<CR>==", { noremap = true })
 
-"" Moving text
-vnoremap <m-j> :m '>+1<CR>gv=gv
-vnoremap <m-k> :m '<-2<CR>gv=gv
-nnoremap <m-j> :m .+1<CR>==
-nnoremap <m-k> :m .-2<CR>==
-inoremap <m-j> <esc> :m .+1<CR>==
-inoremap <m-k> <esc> :m .-2<CR>==
+-- Undo Break points
+vim.keymap.set("i", ',', ",<C-g>u", { noremap = true })
+vim.keymap.set("i", '.', ".<C-g>u", { noremap = true })
+vim.keymap.set("i", '!', "!<C-g>u", { noremap = true })
+vim.keymap.set("i", '?', "?<C-g>u", { noremap = true })
 
-"" Undo Break opints
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
+-- Increments & Decrements
+vim.keymap.set("n", '+', "<C-a>", { noremap = true })
+vim.keymap.set("n", '-', "<C-x>", { noremap = true })
+vim.keymap.set("x", '+', "<C-a>", { noremap = true })
+vim.keymap.set("x", '-', "<C-x>", { noremap = true })
+vim.keymap.set("x", 'g+', "g<C-a>", { noremap = true })
+vim.keymap.set("x", 'g-', "g<C-x>", { noremap = true })
 
-" Increments & Decrements
-nnoremap + <C-a>
-nnoremap - <C-x>
-xnoremap + <C-a>
-xnoremap - <C-x>
-xnoremap g+ g<C-a>
-xnoremap g- g<C-x>
+-- Fast buffer switching
+vim.keymap.set("n", '<Backspace>', "<C-^>", { noremap = true })
 
-" Fast buffer switching
-nnoremap <Backspace> <C-^>
+-- Execute macro over visual line selections
+vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
 
-" Execute macro over visual line selections
-xnoremap Q :'<,'>:normal @q<CR>
-
-" Disable Command history & EX mode
-nnoremap q: :q
-nnoremap Q :q
+-- Disable Command history & EX mode
+vim.keymap.set("n", 'q:', ":q", { noremap = true })
+vim.keymap.set("n", 'Q', ":q", { noremap = true })
+EOF
 
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
