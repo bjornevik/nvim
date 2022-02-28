@@ -57,7 +57,7 @@ require("indent_blankline").setup {
   use_treesitter = true,
   show_current_context = true,
   space_char_blankline = " ",
-  filetype_exclude = { "dashboard" },
+  filetype_exclude = { "alpha" },
 }
 
 -- GITSIGNS
@@ -80,38 +80,27 @@ require("gitsigns").setup {
 }
 vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>") -- fugitive.vim
 
--- dashboard-nvim
-local g = vim.g
-g.dashboard_default_executive = "telescope"
-g.dashboard_custom_section = {
-  a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
-  b = { description = { "  File Browser              SPC f b" }, command = "Telescope file_browser" },
-  c = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
-  d = { description = { "  Find String               SPC f s" }, command = "Telescope live_grep" },
-  e = {
-    description = { "  Harpoon                   SPC h m" },
-    command = "lua require('harpoon.ui').toggle_quick_menu()",
-  },
-  f = {
-    description = { "  Nvim Config               SPC vrc" },
-    command = "lua require('bjornevik.telescope').search_dotfiles()",
-  },
+-- alpha-nvim
+local alpha = require "alpha"
+local dashboard = require "alpha.themes.dashboard"
+dashboard.section.header.val = {
+  "                                                     ",
+  "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+  "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+  "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+  "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+  "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+  "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+  "                                                     ",
 }
-g.dashboard_custom_footer = { "type :help<Enter>" }
-g.dashboard_custom_header = {
-  "                                   ",
-  "                                   ",
-  "                                   ",
-  "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
-  "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
-  "          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
-  "           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
-  "          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
-  "   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
-  "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
-  " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
-  " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
-  "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
-  "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
-  "                                   ",
+
+dashboard.section.buttons.val = {
+  dashboard.button("SPC f f", "  Find File", ":Telescope find_files<CR>"),
+  dashboard.button("SPC f b", "  File Browser", ":Telescope file_browser<CR>"),
+  dashboard.button("SPC f o", "  Recent", ":Telescope oldfiles<CR>"),
+  dashboard.button("SPC f s", "  Find String", ":Telescope live_grep<CR>"),
+  dashboard.button("SPC h m", "  Harpoon", ":lua require('harpoon.ui').toggle_quick_menu()<CR>"),
+  dashboard.button("SPC vrc", "  Settings", ":lua require('bjornevik.telescope').search_dotfiles()<CR>"),
 }
+
+alpha.setup(dashboard.opts)

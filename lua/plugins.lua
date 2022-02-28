@@ -101,7 +101,8 @@ return require("packer").startup(function(use)
 
   -- Appearance
   use "marko-cerovac/material.nvim"
-  use "glepnir/dashboard-nvim" -- REPLACE
+  -- use "glepnir/dashboard-nvim" -- REPLACE
+  use 'goolord/alpha-nvim"'
   use "lukas-reineke/indent-blankline.nvim"
   use "stevearc/dressing.nvim"
   use "norcalli/nvim-colorizer.lua"
