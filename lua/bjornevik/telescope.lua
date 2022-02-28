@@ -83,7 +83,7 @@ require("refactoring").setup({})
 telescope.load_extension("refactoring")
 
 local M = {}
-local search_dotfiles = function()
+M.search_dotfiles = function()
 	telescope_builtin.find_files({
 		prompt_title = "< VimRC >",
 		cwd = "~/.config/nvim",
@@ -108,7 +108,7 @@ vim.keymap.set("n", "<leader>fo", telescope_builtin.oldfiles, { noremap = true }
 
 vim.keymap.set("n", "<leader>fg", telescope_builtin.git_files, { noremap = true })
 
-vim.keymap.set("n", "<leader>vrc", search_dotfiles, { noremap = true })
+vim.keymap.set("n", "<leader>vrc", M.search_dotfiles, { noremap = true })
 
 -- Plugin specific remaps
 vim.keymap.set(
