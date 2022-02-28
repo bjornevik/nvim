@@ -1,5 +1,4 @@
 --[[
-
     ____      ______  ____  _   _________    ________ __
    / __ )    / / __ \/ __ \/ | / / ____/ |  / /  _/ //_/
   / __  |_  / / / / / /_/ /  |/ / __/  | | / // // ,<
@@ -9,7 +8,7 @@
 
 Notes to people reading my configuration
 
-This configuration runs on Neovim Nightly (NVIM v0.7.0-dev+1158)
+This configuration runs on Neovim Nightly (NVIM v0.7.0-dev+1159)
 
 It uses the wbthomason/packer.nvim package manager.
 
