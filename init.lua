@@ -20,6 +20,8 @@ I use <space> as my leader key.
 --]]
 vim.g.mapleader = " "
 
+pcall(require, "impatient")
+
 require "plugins"
 require "defaults"
 require "bjornevik"

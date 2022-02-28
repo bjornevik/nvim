@@ -1,5 +1,6 @@
 return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
+  use "lewis6991/impatient.nvim"
 
   -- Movement
   use "ggandor/lightspeed.nvim"
@@ -101,8 +102,10 @@ return require("packer").startup(function(use)
 
   -- Appearance
   use "marko-cerovac/material.nvim"
-  -- use "glepnir/dashboard-nvim" -- REPLACE
-  use 'goolord/alpha-nvim"'
+  use {
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" },
+  }
   use "lukas-reineke/indent-blankline.nvim"
   use "stevearc/dressing.nvim"
   use "norcalli/nvim-colorizer.lua"
