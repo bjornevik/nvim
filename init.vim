@@ -1,22 +1,10 @@
-filetype plugin on
-syntax on
-set path+=**
-
-set wildmode=longest,full
-set wildmenu
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
-set wildignore+=**/.go/*
-
 " """""""""""""""""""
 "       Remaps      "
 " """""""""""""""""""
-let mapleader=" "
+lua << EOF
+vim.g.mapleader = " "
+EOF
+
 
 " Copies and Pastes
 nnoremap <leader>y "+y
@@ -136,23 +124,20 @@ Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 " Plugin Configs
-lua require("bjornevik")
-lua require('Comment').setup()
-xmap gs <Plug>VSurround
-nnoremap <silent> <leader>nf <cmd>Neoformat<CR>
-nnoremap <silent> <leader>ng <cmd>lua require('neogen').generate()<CR>
-nnoremap <silent> <C-q> <cmd>TroubleToggle quickfix<CR>
-nnoremap <silent> <leader>q <cmd>TroubleToggle document_diagnostics<CR>
-nnoremap <silent> <C-j> <cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>
-nnoremap <silent> <C-k> <cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>
+lua << EOF
+require("bjornevik")
+require("Comment").setup()
+vim.keymap.set("n", '<leader>nf', ':Neoformat<CR>', { noremap = true })
+vim.keymap.set("n", '<leader>ng', require('neogen').generate, { noremap = true })
+vim.keymap.set("n", '<C-q>', ':TroubleToggle quickfix<CR>', { noremap = true })
+vim.keymap.set("n", '<leader>q', ':TroubleToggle document_diagnostics<CR>', { noremap = true })
+vim.keymap.set("n", '<C-j>', function () require("trouble").next({ skip_groups = true, jump = true}) end, { noremap = true })
+vim.keymap.set("n", '<C-k>', function () require("trouble").previous({ skip_groups = true, jump = true}) end, { noremap = true })
 
-" Autocommands
-augroup JBJORNEVIK
-  autocmd!
-  autocmd! InsertEnter * norm zz
-  autocmd! BufWritePre * %s/\s\+$//e
-  autocmd FileType * setlocal formatoptions-=o
-  autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, border='rounded'})
-  " autocmd! CursorHold * lua vim.diagnostic.open_float(0, {scope="line", focusable=false, border='rounded'})
-  autocmd BufWritePre * undojoin | Neoformat
-augroup end
+vim.api.nvim_create_augroup({ name = "bjornevik"})
+vim.api.nvim_create_autocmd({ event = "InsertEnter", group = "bjornevik", pattern = "*", callback = function () vim.cmd(':norm zz') end })
+vim.api.nvim_create_autocmd({ event = "BufWritePre", group = "bjornevik", pattern = "*", callback = function () vim.cmd('%s/\\s\\+$//e') end })
+vim.api.nvim_create_autocmd({ event = "FileType",    group = "bjornevik", pattern = "*", callback = function () vim.opt_local.formatoptions:remove 'o' end })
+vim.api.nvim_create_autocmd({ event = "CursorHold",  group = "bjornevik", pattern = "*", callback = function () vim.diagnostic.open_float(0, {scope = "cursor", focusable = false, border = 'rounded'}) end })
+vim.api.nvim_create_autocmd({ event = "BufWritePre", group = "bjornevik", pattern = "*", callback = function () vim.cmd('try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry') end })
+EOF
