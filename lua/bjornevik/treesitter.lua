@@ -66,3 +66,6 @@ ft_to_parser.jsx = "tsx"
 require("neogen").setup({
 	enabled = true,
 })
+
+vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true })
+

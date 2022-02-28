@@ -1,5 +1,4 @@
 local lspconfig = require("lspconfig")
-require("fidget").setup({})
 
 -- LSP settings
 local on_attach = function(client, bufnr)
@@ -124,3 +123,17 @@ lspSymbol("Warning", " ")
 lspSymbol("Hint", " ")
 lspSymbol("Information", " ")
 lspSymbol("Info", " ")
+
+-- Folke/Trouble.nvim
+vim.keymap.set("n", "<C-q>", ":TroubleToggle quickfix<CR>", { noremap = true })
+
+vim.keymap.set("n", "<leader>q", ":TroubleToggle document_diagnostics<CR>", { noremap = true })
+
+vim.keymap.set("n", "<C-j>", function()
+	require("trouble").next({ skip_groups = true, jump = true })
+end, { noremap = true })
+
+vim.keymap.set("n", "<C-k>", function()
+	require("trouble").previous({ skip_groups = true, jump = true })
+end, { noremap = true })
+

@@ -34,7 +34,7 @@ telescope.setup({
 			"undodir/.*",
 			"*/frontend-ui-tests/.*",
 			"node_modules/.*",
-			"coc/.*",
+			"plugin/.*",
 			"automatic_backups/.*",
 			"build/.*",
 			"android/.*",
