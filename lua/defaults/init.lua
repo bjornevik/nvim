@@ -1,3 +1,3 @@
-require('defaults.opts')
-require('defaults.keybinds')
-require('defaults.autocmds')
+require "defaults.opts"
+require "defaults.keybinds"
+require "defaults.autocmds"

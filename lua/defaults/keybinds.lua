@@ -38,4 +38,3 @@ vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
 -- Disable Command history & EX mode
 vim.keymap.set("n", "q:", ":q", { noremap = true })
 vim.keymap.set("n", "Q", ":q", { noremap = true })
-

@@ -1,8 +1,8 @@
-require("bjornevik.telescope")
-require("bjornevik.lsp")
-require("bjornevik.cmp")
-require("bjornevik.treesitter")
-require("bjornevik.luasnip")
-require("bjornevik.harpoon")
-require("bjornevik.lightspeed")
-require("bjornevik.appearance")
+require "bjornevik.telescope"
+require "bjornevik.lsp"
+require "bjornevik.cmp"
+require "bjornevik.treesitter"
+require "bjornevik.luasnip"
+require "bjornevik.harpoon"
+require "bjornevik.lightspeed"
+require "bjornevik.appearance"
