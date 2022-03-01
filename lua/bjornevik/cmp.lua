@@ -3,10 +3,8 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
-local luasnip = require "luasnip"
 local cmp = require "cmp"
 local types = require "cmp.types"
-local lspkind = require "lspkind"
 local neogen = require "neogen"
 
 cmp.setup {
@@ -65,8 +63,6 @@ cmp.setup {
         nvim_lua = "[Lua]",
       })[entry.source.name]
       return vim_item
-      -- vim_item.kind = lspkind.presets.default[vim_item.kind]
-      -- return vim_item
     end,
   },
 }
@@ -80,10 +76,6 @@ npairs.setup {
   map_cr = true,
   auto_select = true,
 }
-
-local Rule = require "nvim-autopairs.rule"
-local cond = require "nvim-autopairs.conds"
-local utils = require "nvim-autopairs.utils"
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

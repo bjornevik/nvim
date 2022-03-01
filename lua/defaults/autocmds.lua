@@ -1,6 +1,7 @@
 -- AutoCommands
 vim.api.nvim_create_augroup("bjornevik", {})
 
+-- Centers current line vertically when entering INSERT mode
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = "bjornevik",
   pattern = "*",
@@ -9,6 +10,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   end,
 })
 
+-- Removes whitespace at the ends of lines before saving
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "bjornevik",
   pattern = "*",
@@ -17,6 +19,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- Disable automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 vim.api.nvim_create_autocmd("FileType", {
   group = "bjornevik",
   pattern = "*",
@@ -25,6 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Show diagnostic on cursor hover.
 vim.api.nvim_create_autocmd("CursorHold", {
   group = "bjornevik",
   pattern = "*",
@@ -33,6 +37,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end,
 })
 
+-- Run Neoformat before save
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "bjornevik",
   pattern = "*",

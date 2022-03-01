@@ -3,7 +3,6 @@ vim.cmd [[colorscheme material]]
 -- LUALINE
 require("lualine").setup {
   options = {
-    -- theme = 'kanagawa'
     theme = "material",
   },
   sections = {

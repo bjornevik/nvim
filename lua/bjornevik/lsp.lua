@@ -1,7 +1,7 @@
 local lspconfig = require "lspconfig"
 
 -- LSP settings
-local on_attach = function(client, bufnr)
+local on_attach = function()
   local pop_opts = { border = "rounded", max_width = 80 }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
@@ -100,6 +100,7 @@ lspconfig.tsserver.setup {
   },
 }
 
+-- Diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   signs = {
     severity_limit = "Error",
