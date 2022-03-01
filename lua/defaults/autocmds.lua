@@ -5,18 +5,16 @@ vim.api.nvim_create_augroup("bjornevik", {})
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = "bjornevik",
   pattern = "*",
-  callback = function()
-    vim.cmd ":norm zz"
-  end,
+  command = ":norm zz",
+  desc = "Centers current line vertically when entering INSERT mode",
 })
 
 -- Removes whitespace at the ends of lines before saving
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "bjornevik",
   pattern = "*",
-  callback = function()
-    vim.cmd "%s/\\s\\+$//e"
-  end,
+  command = "%s/\\s\\+$//e",
+  desc = "Removes whitespace at the ends of lines before saving",
 })
 
 -- Disable automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
@@ -26,6 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.formatoptions:remove "o"
   end,
+  desc = "Disable automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.",
 })
 
 -- Show diagnostic on cursor hover.
@@ -35,13 +34,23 @@ vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
     vim.diagnostic.open_float(0, { scope = "cursor", focusable = false, border = "rounded" })
   end,
+  desc = "Show diagnostic on cursor hover.",
 })
 
 -- Run Neoformat before save
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "bjornevik",
   pattern = "*",
+  command = "try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry",
+  desc = "Run Neoformat before save",
+})
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = "bjornevik",
+  pattern = "*",
   callback = function()
-    vim.cmd "try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry"
+    require("vim.highlight").on_yank()
   end,
+  desc = "Highlight on yank",
 })
