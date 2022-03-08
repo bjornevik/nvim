@@ -47,8 +47,15 @@ return require("packer").startup(function(use)
   }
 
   use "neovim/nvim-lspconfig"
-  use { "akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim" }
-  -- use 'dart-lang/dart-vim-plugin'
+  use {
+    "akinsho/flutter-tools.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "Neevash/awesome-flutter-snippets" },
+      { "dart-lang/dart-vim-plugin" },
+    },
+  }
+  -- use "dart-lang/dart-vim-plugin"
   use "simrat39/rust-tools.nvim"
   use "ray-x/lsp_signature.nvim"
   use "folke/lua-dev.nvim"
@@ -68,10 +75,10 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-nvim-lua" },
-      { "saadparwaiz1/cmp_luasnip" },
       { "onsails/lspkind-nvim" },
-      { "L3MON4D3/LuaSnip" },
       { "rafamadriz/friendly-snippets" },
+      { "L3MON4D3/LuaSnip" },
+      { "saadparwaiz1/cmp_luasnip" },
     },
   }
 
