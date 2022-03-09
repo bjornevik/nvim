@@ -119,8 +119,9 @@ return require("packer").startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
   use { "p00f/nvim-ts-rainbow", requires = { { "nvim-treesitter/nvim-treesitter" } } }
-  use {
-    "kdheepak/tabline.nvim",
-    requires = { { "nvim-lualine/lualine.nvim" }, { "kyazdani42/nvim-web-devicons" } },
-  }
+  use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
+  -- use {
+  --   "kdheepak/tabline.nvim",
+  --   requires = { { "nvim-lualine/lualine.nvim" }, { "kyazdani42/nvim-web-devicons" } },
+  -- }
 end)

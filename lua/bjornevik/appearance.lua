@@ -1,4 +1,4 @@
-vim.cmd [[colorscheme material]]
+vim.cmd "colorscheme material"
 
 -- LUALINE
 require("lualine").setup {
@@ -36,13 +36,22 @@ require("lualine").setup {
   },
 }
 
--- tabline
-require("tabline").setup {
-  enable = true,
+-- bufferline
+require("bufferline").setup {
   options = {
-    show_filename_only = true,
+    diagnostics = "nvim_lsp",
+    custom_filter = function(buf_number)
+      if vim.fn.bufname(buf_number) ~= "__FLUTTER_DEV_LOG__" then
+        return true
+      end
+    end,
+    separator_style = "slant",
   },
 }
+
+vim.keymap.set("n", "<M-h>", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-l>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>gb", ":BufferLinePick<CR>", { noremap = true, silent = true })
 
 -- NVIM-COLORIZER
 require("colorizer").setup()
@@ -52,6 +61,7 @@ vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 
 require("indent_blankline").setup {
+  enabled = false,
   show_first_indent_level = false,
   use_treesitter = true,
   show_current_context = true,
@@ -73,7 +83,7 @@ require("gitsigns").setup {
       vim.keymap.set(mode, l, r, opts)
     end
 
-    map("n", "<leader>gb", gs.toggle_current_line_blame)
+    -- map("n", "<leader>gb", gs.toggle_current_line_blame)
     map("n", "<leader>gd", gs.diffthis)
   end,
 }
