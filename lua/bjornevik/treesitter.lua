@@ -1,4 +1,3 @@
--- Treesitter
 require("nvim-treesitter.configs").setup {
   autotag = {
     enable = true,
@@ -46,7 +45,32 @@ require("nvim-treesitter.configs").setup {
       },
     },
   },
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "css",
+    "comment",
+    "dart",
+    "dockerfile",
+    "go",
+    "gomod",
+    "gowork",
+    "graphql",
+    "html",
+    "javascript",
+    "jsdoc",
+    "json",
+    "lua",
+    "python",
+    "query",
+    "rust",
+    "scheme",
+    "scss",
+    "tsx",
+    "typescript",
+    "vue",
+    "yaml",
+  },
+  -- ensure_installed = "all",
   rainbow = {
     enable = true,
     extended_mode = true,
