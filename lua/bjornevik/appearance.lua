@@ -4,6 +4,7 @@ vim.cmd "colorscheme material"
 require("lualine").setup {
   options = {
     theme = "material",
+    globalstatus = true,
   },
   sections = {
     lualine_a = {
@@ -83,7 +84,7 @@ require("gitsigns").setup {
       vim.keymap.set(mode, l, r, opts)
     end
 
-    -- map("n", "<leader>gb", gs.toggle_current_line_blame)
+    map("n", "<leader>gB", gs.toggle_current_line_blame)
     map("n", "<leader>gd", gs.diffthis)
   end,
 }
