@@ -1,6 +1,10 @@
 vim.cmd "colorscheme material"
 
 -- LUALINE
+
+local gps = require "nvim-gps"
+gps.setup()
+
 require("lualine").setup {
   options = {
     theme = "material",
@@ -16,9 +20,10 @@ require("lualine").setup {
         icon = "",
       },
       "diff",
+      "diagnostics",
     },
     lualine_c = {
-      "diagnostics",
+      { gps.get_location, cond = gps.is_available },
     },
     lualine_x = {
       "encoding",

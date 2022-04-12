@@ -95,6 +95,7 @@ return require("packer").startup(function(use)
     end,
     requires = { { "nvim-treesitter/nvim-treesitter" } },
   }
+  use { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" }
 
   -- Telescope
   use {
@@ -120,8 +121,4 @@ return require("packer").startup(function(use)
   use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
   use { "p00f/nvim-ts-rainbow", requires = { { "nvim-treesitter/nvim-treesitter" } } }
   use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
-  -- use {
-  --   "kdheepak/tabline.nvim",
-  --   requires = { { "nvim-lualine/lualine.nvim" }, { "kyazdani42/nvim-web-devicons" } },
-  -- }
 end)
