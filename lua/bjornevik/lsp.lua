@@ -143,6 +143,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = true,
 })
 
+-- ESLint
+require("lspconfig").eslint.setup {}
+
 local function lspSymbol(name, icon)
   vim.fn.sign_define(
     "DiagnosticSign" .. name,
