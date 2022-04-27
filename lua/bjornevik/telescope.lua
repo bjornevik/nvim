@@ -52,11 +52,26 @@ telescope.setup {
         },
       },
     },
+    find_files = {
+      hidden = true,
+    },
+    live_grep = {
+      hidden = true,
+    },
+    oldfiles = {
+      hidden = true,
+    },
+    git_files = {
+      hidden = true,
+    },
   },
   extensions = {
     fzy_native = {
       override_generic_sorter = false,
       override_file_sorter = true,
+    },
+    file_browser = {
+      hidden = true,
     },
   },
 }
@@ -77,9 +92,7 @@ M.search_dotfiles = function()
 end
 
 -- Telescope remaps
-vim.keymap.set("n", "<leader>ff", function()
-  telescope_builtin.find_files { hidden = true }
-end, { noremap = true })
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { noremap = true })
 
 vim.keymap.set("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
 
