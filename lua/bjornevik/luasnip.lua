@@ -1,17 +1,17 @@
 local ls = require "luasnip"
 local types = require "luasnip.util.types"
 
-require("luasnip/loaders/from_vscode").load() -- opts can be ommited
+require("luasnip/loaders/from_vscode").lazy_load() -- opts can be ommited
 
 -- Expand the current item or jump to the next item within the snippet
-vim.keymap.set({ "i", "s" }, "<c-k>", function()
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
 end, { silent = true })
 
 -- This always moves to the previous item within the snippet
-vim.keymap.set({ "i", "s" }, "<c-j>", function()
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
