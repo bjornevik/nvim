@@ -4,6 +4,7 @@ vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("n", "<leader>Y", '"+Y', { noremap = true })
 vim.keymap.set("n", "<leader>p", '"+p', { noremap = true })
 vim.keymap.set("n", "<leader>P", '"+P', { noremap = true })
+vim.keymap.set("v", "<leader>p", '"+p', { noremap = true })
 
 -- Keep it centered
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
