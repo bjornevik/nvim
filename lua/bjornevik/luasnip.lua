@@ -25,7 +25,7 @@ vim.keymap.set({ "i", "s" }, "<c-l>", function()
 end)
 
 -- shortcut to source my luasnips file again, which will reload my snippets
-vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/bjornevik/luasnip.lua<CR>")
+vim.keymap.set("n", "<leader><leader>s", ":source ~/.config/nvim/lua/bjornevik/luasnip.lua<CR>")
 
 ls.config.set_config {
   history = true,
@@ -40,18 +40,34 @@ ls.config.set_config {
   },
 }
 
--- Snippet creator: s(<trigger>, <nodes>)
-local s = ls.s
--- Format node: fmt(<fmt_string>, {..nodes})
-local fmt = require("luasnip.extras.fmt").fmt
--- Insert node: i(<position>, [default_text])
+local s = ls.snippet
 local i = ls.insert_node
--- Repeat a node: rep(<position>)
-local rep = require("luasnip.extras").rep
+local fmt = require("luasnip.extras.fmt").fmt
+local f = ls.function_node
 
-ls.snippets = {
-  lua = {
-    -- Lua specific snippets go here
-    s("rq", fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
-  },
-}
+-- Custom snippet definitions
+ls.add_snippets("all", {
+  s(
+    "curtime",
+    f(function()
+      return os.date "%Y-%m-%dT%H:%M:%S"
+    end)
+  ),
+})
+
+-- Lua only
+ls.add_snippets("lua", {
+  s(
+    "req",
+    fmt([[local {} = require "{}"]], {
+      f(function(import_name)
+        local parts = vim.split(import_name[1][1], ".", true)
+        return parts[#parts] or ""
+      end, { 1 }),
+      i(1),
+    })
+  ),
+})
+
+require "bjornevik.snippets.vue"
+require "bjornevik.snippets.rust"
