@@ -27,12 +27,14 @@ ls.add_snippets("vue", {
     "getter",
     fmt(
       [[
-    {}: '{}/{}',
+    {}: '{}',
     ]],
       {
-        i(1, "example"),
-        i(2, "example"),
-        rep(1),
+        f(function(import_name)
+          local parts = vim.split(import_name[1][1], "/", true)
+          return parts[#parts] or ""
+        end, { 1 }),
+        i(1, "example/example"),
       }
     )
   ),
