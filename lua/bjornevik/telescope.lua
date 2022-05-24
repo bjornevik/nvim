@@ -72,6 +72,7 @@ telescope.setup {
     },
     file_browser = {
       hidden = true,
+      hijack_netrw = true,
       mappings = {
         ["i"] = {
           ["<M-n>"] = require("telescope").extensions.file_browser.actions.create_from_prompt,
