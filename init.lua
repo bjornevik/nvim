@@ -5,10 +5,7 @@
  / /_/ / /_/ / /_/ / _, _/ /|  / /___  | |/ // // /| |
 /_____/\____/\____/_/ |_/_/ |_/_____/  |___/___/_/ |_|
 
-
-Notes to people reading my configuration
-
-This configuration runs on Neovim Nightly (NVIM v0.7.0-dev+1159)
+This configuration runs on Neovim Nightly
 
 It uses the wbthomason/packer.nvim package manager.
 
