@@ -67,6 +67,13 @@ cmp.setup {
   },
 }
 
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
 -- AutoPairs
 local npairs = require "nvim-autopairs"
 npairs.setup {
