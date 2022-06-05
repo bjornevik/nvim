@@ -1,5 +1,6 @@
 require "bjornevik.telescope"
 require "bjornevik.lsp"
+require "bjornevik.dap"
 require "bjornevik.cmp"
 require "bjornevik.treesitter"
 require "bjornevik.luasnip"

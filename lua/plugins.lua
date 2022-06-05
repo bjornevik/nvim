@@ -121,4 +121,15 @@ return require("packer").startup(function(use)
   use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
   use { "p00f/nvim-ts-rainbow", requires = { { "nvim-treesitter/nvim-treesitter" } } }
   use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
+
+  -- DAP
+  use {
+    "mfussenegger/nvim-dap",
+    requires = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "nvim-telescope/telescope-dap.nvim",
+      "leoluz/nvim-dap-go",
+    },
+  }
 end)
