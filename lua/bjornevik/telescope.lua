@@ -1,4 +1,8 @@
-local telescope = require "telescope"
+local has_telescope, telescope = pcall(require, "telescope")
+if not has_telescope then
+  return
+end
+
 local actions = require "telescope.actions"
 local telescope_sorters = require "telescope.sorters"
 local telescope_previewers = require "telescope.previewers"

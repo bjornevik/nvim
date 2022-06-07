@@ -1,4 +1,9 @@
-require("harpoon").setup {
+local has_harpoon, harpoon = pcall(require, "harpoon")
+if not has_harpoon then
+  return
+end
+
+harpoon.setup {
   nav_first_in_list = true,
   requires = { "nvim-lua/plenary" },
 }

@@ -1,3 +1,8 @@
+local has_treesitter, _ = pcall(require, "nvim-treesitter")
+if not has_treesitter then
+  return
+end
+
 require("nvim-treesitter.configs").setup {
   autotag = {
     enable = true,

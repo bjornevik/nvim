@@ -1,4 +1,7 @@
-local lspconfig = require "lspconfig"
+local has_lspconfig, lspconfig = pcall(require, "lspconfig")
+if not has_lspconfig then
+  return
+end
 
 -- LSP settings
 local on_attach = function()

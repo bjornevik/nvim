@@ -1,4 +1,8 @@
-local ls = require "luasnip"
+local has_luasnip, ls = pcall(require, "luasnip")
+if not has_luasnip then
+  return
+end
+
 local types = require "luasnip.util.types"
 
 require("luasnip/loaders/from_vscode").lazy_load() -- opts can be ommited
