@@ -25,12 +25,7 @@ return require("packer").startup(function(use)
       { "nvim-treesitter/nvim-treesitter" },
     },
   }
-  use {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup {}
-    end,
-  }
+  use "numToStr/Comment.nvim"
   use {
     "sbdchd/neoformat",
     config = function()
@@ -96,6 +91,7 @@ return require("packer").startup(function(use)
     requires = { { "nvim-treesitter/nvim-treesitter" } },
   }
   use { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" }
+  use { "JoosepAlviste/nvim-ts-context-commentstring", require = "nvim-treesitter/nvim-treesitter" }
 
   -- Telescope
   use {
