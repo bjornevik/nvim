@@ -1,3 +1,3 @@
 require "defaults.opts"
-require "defaults.keybinds"
+require "defaults.keymaps"
 require "defaults.autocmds"
