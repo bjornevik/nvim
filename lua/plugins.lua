@@ -92,6 +92,7 @@ return require("packer").startup(function(use)
   }
   use { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" }
   use { "JoosepAlviste/nvim-ts-context-commentstring", require = "nvim-treesitter/nvim-treesitter" }
+  use { "ziontee113/syntax-tree-surfer", requires = { "nvim-treesitter/nvim-treesitter" } }
 
   -- Telescope
   use {

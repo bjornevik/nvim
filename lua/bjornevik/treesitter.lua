@@ -119,3 +119,42 @@ require("neogen").setup {
 }
 
 vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true })
+
+-- syntax-tree-surfer
+require("syntax-tree-surfer").setup()
+local opts = { noremap = true, silent = true }
+
+-- Normal Mode Swapping:
+-- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
+vim.keymap.set("n", "MU", function()
+  vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
+  return "g@l"
+end, { silent = true, expr = true })
+vim.keymap.set("n", "MD", function()
+  vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
+  return "g@l"
+end, { silent = true, expr = true })
+
+-- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
+vim.keymap.set("n", "md", function()
+  vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
+  return "g@l"
+end, { silent = true, expr = true })
+vim.keymap.set("n", "mu", function()
+  vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
+  return "g@l"
+end, { silent = true, expr = true })
+
+-- Visual Selection from Normal Mode
+vim.keymap.set("n", "vx", "<cmd>STSSelectMasterNode<cr>", opts)
+vim.keymap.set("n", "vn", "<cmd>STSSelectCurrentNode<cr>", opts)
+
+-- Select Nodes in Visual Mode
+vim.keymap.set("x", "J", "<cmd>STSSelectNextSiblingNode<cr>", opts)
+vim.keymap.set("x", "K", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
+vim.keymap.set("x", "H", "<cmd>STSSelectParentNode<cr>", opts)
+vim.keymap.set("x", "L", "<cmd>STSSelectChildNode<cr>", opts)
+
+-- Swapping Nodes in Visual Mode
+vim.keymap.set("x", "<C-j>", "<cmd>STSSwapNextVisual<cr>", opts)
+vim.keymap.set("x", "<C-k>", "<cmd>STSSwapPrevVisual<cr>", opts)
