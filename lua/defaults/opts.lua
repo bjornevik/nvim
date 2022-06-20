@@ -43,4 +43,4 @@ vim.opt.termguicolors = true
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.shortmess:append "c"
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
-vim.g.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
