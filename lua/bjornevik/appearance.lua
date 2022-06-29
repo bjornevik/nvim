@@ -1,3 +1,4 @@
+-- Colorscheme
 vim.cmd "colorscheme material"
 
 -- LUALINE
@@ -65,6 +66,8 @@ require("colorizer").setup()
 -- INDENT BLANKLINE
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "tab:» "
+vim.opt.listchars:append "trail:~"
 
 require("indent_blankline").setup {
   enabled = false,
