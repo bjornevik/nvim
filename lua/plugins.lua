@@ -18,6 +18,7 @@ return require("packer").startup(function(use)
   use "windwp/nvim-autopairs"
   use "wellle/targets.vim"
   use "tpope/vim-surround"
+  use "mrjones2014/smart-splits.nvim"
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {

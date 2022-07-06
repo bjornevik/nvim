@@ -39,9 +39,3 @@ vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
 -- Disable Command history & EX mode
 vim.keymap.set("n", "q:", ":q", { noremap = true })
 vim.keymap.set("n", "Q", ":q", { noremap = true })
-
--- Resize splits
-vim.keymap.set("n", "<C-M-H>", ":vertical resize +2<CR>")
-vim.keymap.set("n", "<C-M-J>", ":resize +2<CR>")
-vim.keymap.set("n", "<C-M-K>", ":resize -2<CR>")
-vim.keymap.set("n", "<C-M-L>", ":vertical resize -2<CR>")
