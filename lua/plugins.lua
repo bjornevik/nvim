@@ -6,7 +6,7 @@ return require("packer").startup(function(use)
   use "ggandor/lightspeed.nvim"
 
   -- Git
-  use "tpope/vim-fugitive"
+  use "TimUntersberger/neogit"
   use {
     "lewis6991/gitsigns.nvim",
     requires = {
