@@ -46,6 +46,12 @@ return require("packer").startup(function(use)
       { "kana/vim-textobj-user" },
     },
   }
+  use {
+    "andrewferrier/textobj-diagnostic.nvim",
+    config = function()
+      require("textobj-diagnostic").setup {}
+    end,
+  }
 
   use "neovim/nvim-lspconfig"
   use {
