@@ -17,7 +17,12 @@ return require("packer").startup(function(use)
   -- Utilty
   use "windwp/nvim-autopairs"
   use "wellle/targets.vim"
-  use "tpope/vim-surround"
+  use {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup {}
+    end,
+  }
   use "mrjones2014/smart-splits.nvim"
   use {
     "ThePrimeagen/refactoring.nvim",
