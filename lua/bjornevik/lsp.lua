@@ -166,10 +166,10 @@ vim.keymap.set("n", "<C-q>", ":TroubleToggle quickfix<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader>q", ":TroubleToggle document_diagnostics<CR>", { noremap = true })
 
-vim.keymap.set("n", "<C-j>", function()
+vim.keymap.set("n", "<C-n>", function()
   require("trouble").next { skip_groups = true, jump = true }
 end, { noremap = true })
 
-vim.keymap.set("n", "<C-k>", function()
+vim.keymap.set("n", "<C-p>", function()
   require("trouble").previous { skip_groups = true, jump = true }
 end, { noremap = true })
