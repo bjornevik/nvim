@@ -4,7 +4,7 @@ if not has_lspconfig then
 end
 
 -- LSP settings
-local on_attach = function()
+local on_attach = function(client)
   local pop_opts = { border = "rounded", max_width = 80 }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
@@ -19,6 +19,28 @@ local on_attach = function()
   vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
   vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = 0 })
+
+  if client.server_capabilities.codeLensProvider then
+    vim.api.nvim_create_augroup("lsp_document_codelens", {})
+    vim.api.nvim_create_autocmd("BufEnter", {
+      group = "lsp_document_codelens",
+      pattern = "*",
+      callback = function()
+        vim.lsp.codelens.refresh()
+      end,
+      desc = "refreshes codelenses on BufEnter",
+      once = true,
+    })
+    vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+      group = "lsp_document_codelens",
+      pattern = "*",
+      callback = function()
+        vim.lsp.codelens.refresh()
+      end,
+      desc = "refreshes codelenses on BufWritePost",
+    })
+    vim.keymap.set("n", "<leader>lr", vim.lsp.codelens.run)
+  end
 end
 
 require("lsp_signature").setup {
