@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>lp", function()
   dap.set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
 end)
 
-vim.keymap.set("n", "<leader>dr", dap.repl.open)
+vim.keymap.set("n", "<leader>dr", dap.repl.toggle)
 vim.keymap.set("n", "<F1>", dap.step_back)
 vim.keymap.set("n", "<F2>", dap.step_into)
 vim.keymap.set("n", "<F3>", dap.step_over)
