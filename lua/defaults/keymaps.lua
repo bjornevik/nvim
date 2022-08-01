@@ -1,10 +1,8 @@
 -- Copies and Pastes
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
-vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
 vim.keymap.set("n", "<leader>Y", '"+Y', { noremap = true })
-vim.keymap.set("n", "<leader>p", '"+p', { noremap = true })
 vim.keymap.set("n", "<leader>P", '"+P', { noremap = true })
-vim.keymap.set("v", "<leader>p", '"+p', { noremap = true })
 
 -- Keep it centered
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
@@ -23,10 +21,8 @@ vim.keymap.set("i", "!", "!<C-g>u", { noremap = true })
 vim.keymap.set("i", "?", "?<C-g>u", { noremap = true })
 
 -- Increments & Decrements
-vim.keymap.set("n", "+", "<C-a>", { noremap = true })
-vim.keymap.set("n", "-", "<C-x>", { noremap = true })
-vim.keymap.set("x", "+", "<C-a>", { noremap = true })
-vim.keymap.set("x", "-", "<C-x>", { noremap = true })
+vim.keymap.set({ "n", "x" }, "+", "<C-a>", { noremap = true })
+vim.keymap.set({ "n", "x" }, "-", "<C-x>", { noremap = true })
 vim.keymap.set("x", "g+", "g<C-a>", { noremap = true })
 vim.keymap.set("x", "g-", "g<C-x>", { noremap = true })
 
@@ -41,7 +37,7 @@ vim.keymap.set("n", "q:", ":q", { noremap = true })
 vim.keymap.set("n", "Q", ":q", { noremap = true })
 
 -- make HJKl behave better for navigation
-vim.keymap.set("n", "H", "^", { noremap = true })
-vim.keymap.set("n", "J", "<C-d>", { noremap = true })
-vim.keymap.set("n", "K", "<C-u>", { noremap = true })
-vim.keymap.set("n", "L", "$", { noremap = true })
+vim.keymap.set({ "n", "x" }, "H", "^", { noremap = true })
+vim.keymap.set({ "n", "x" }, "J", "<C-d>", { noremap = true })
+vim.keymap.set({ "n", "x" }, "K", "<C-u>", { noremap = true })
+vim.keymap.set({ "n", "x" }, "L", "$", { noremap = true })
