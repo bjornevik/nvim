@@ -1,4 +1,13 @@
-return require("packer").startup(function(use)
+local packer = require "packer"
+
+packer.init {
+  max_jobs = 8,
+  git = {
+    default_url_format = "git@github.com:%s",
+  },
+}
+
+return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "lewis6991/impatient.nvim"
 
