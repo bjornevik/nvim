@@ -150,10 +150,10 @@ vim.keymap.set("n", "vx", "<cmd>STSSelectMasterNode<cr>", opts)
 vim.keymap.set("n", "vn", "<cmd>STSSelectCurrentNode<cr>", opts)
 
 -- Select Nodes in Visual Mode
-vim.keymap.set("x", "<C-H>", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
-vim.keymap.set("x", "<C-J>", "<cmd>STSSelectChildNode<cr>", opts)
-vim.keymap.set("x", "<C-K>", "<cmd>STSSelectParentNode<cr>", opts)
-vim.keymap.set("x", "<C-L>", "<cmd>STSSelectNextSiblingNode<cr>", opts)
+vim.keymap.set("x", "<C-M-H>", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
+vim.keymap.set("x", "<C-M-J>", "<cmd>STSSelectChildNode<cr>", opts)
+vim.keymap.set("x", "<C-M-K>", "<cmd>STSSelectParentNode<cr>", opts)
+vim.keymap.set("x", "<C-M-L>", "<cmd>STSSelectNextSiblingNode<cr>", opts)
 
 -- Swapping Nodes in Visual Mode
 vim.keymap.set("x", "<C-j>", "<cmd>STSSwapNextVisual<cr>", opts)
