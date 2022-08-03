@@ -121,7 +121,8 @@ require("neogen").setup {
 vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true })
 
 -- syntax-tree-surfer
-require("syntax-tree-surfer").setup()
+local sts = require "syntax-tree-surfer"
+sts.setup()
 local opts = { noremap = true, silent = true }
 
 -- Normal Mode Swapping:
@@ -146,15 +147,26 @@ vim.keymap.set("n", "mu", function()
 end, { silent = true, expr = true })
 
 -- Visual Selection from Normal Mode
-vim.keymap.set("n", "vx", "<cmd>STSSelectMasterNode<cr>", opts)
-vim.keymap.set("n", "vn", "<cmd>STSSelectCurrentNode<cr>", opts)
+vim.keymap.set("n", "vx", sts.select, opts)
+vim.keymap.set("n", "vn", sts.select_current_node, opts)
 
 -- Select Nodes in Visual Mode
-vim.keymap.set("x", "<C-M-H>", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
-vim.keymap.set("x", "<C-M-J>", "<cmd>STSSelectChildNode<cr>", opts)
-vim.keymap.set("x", "<C-M-K>", "<cmd>STSSelectParentNode<cr>", opts)
-vim.keymap.set("x", "<C-M-L>", "<cmd>STSSelectNextSiblingNode<cr>", opts)
+vim.keymap.set("x", "<C-M-H>", function()
+  sts.surf("prev", "visual")
+end, opts)
+vim.keymap.set("x", "<C-M-J>", function()
+  sts.surf("child", "visual")
+end, opts)
+vim.keymap.set("x", "<C-M-K>", function()
+  sts.surf("parent", "visual")
+end, opts)
+vim.keymap.set("x", "<C-M-L>", function()
+  sts.surf("next", "visual")
+end, opts)
 
--- Swapping Nodes in Visual Mode
-vim.keymap.set("x", "<C-j>", "<cmd>STSSwapNextVisual<cr>", opts)
-vim.keymap.set("x", "<C-k>", "<cmd>STSSwapPrevVisual<cr>", opts)
+vim.keymap.set("x", "<C-j>", function()
+  sts.surf("next", "visual", true)
+end, opts)
+vim.keymap.set("x", "<C-k>", function()
+  sts.surf("prev", "visual", true)
+end, opts)
