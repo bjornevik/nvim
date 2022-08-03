@@ -23,18 +23,18 @@ vim.fn.sign_define("DapBreakpoint", { text = "ß", texthl = "", linehl = "", num
 vim.fn.sign_define("DapBreakpointCondition", { text = "ü", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "ඞ", texthl = "Error" })
 
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup {}
 local dapui = require "dapui"
 dapui.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+  dapui.open {}
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+  dapui.close {}
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+  dapui.close {}
 end
 
 -- Language specific setup
