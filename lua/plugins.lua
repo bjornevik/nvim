@@ -83,7 +83,6 @@ return packer.startup(function(use)
   use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "windwp/nvim-ts-autotag"
-  use "ThePrimeagen/jvim.nvim"
   use {
     "danymat/neogen",
     config = function()
