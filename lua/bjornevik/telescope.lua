@@ -71,7 +71,7 @@ telescope.setup {
   },
   extensions = {
     fzy_native = {
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true,
     },
     file_browser = {
