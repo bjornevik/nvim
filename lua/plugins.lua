@@ -81,16 +81,17 @@ return packer.startup(function(use)
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use "nvim-treesitter/playground"
+  use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "windwp/nvim-ts-autotag"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "ziontee113/syntax-tree-surfer"
   use {
     "danymat/neogen",
     config = function()
       require("neogen").setup {}
     end,
   }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "ziontee113/syntax-tree-surfer"
 
   -- Telescope
   use "nvim-telescope/telescope-fzy-native.nvim"
