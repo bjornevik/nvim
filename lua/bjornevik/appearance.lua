@@ -55,7 +55,14 @@ vim.keymap.set("n", "<M-l>", ":BufferLineMoveNext<CR>", { noremap = true, silent
 vim.keymap.set("n", "<leader>gb", ":BufferLinePick<CR>", { noremap = true, silent = true })
 
 -- NVIM-COLORIZER
-require("colorizer").setup()
+require("colorizer").setup {
+  "css",
+  "javascript",
+  "typescript",
+  "vue",
+  "tsx",
+  "jsx",
+}
 
 -- INDENT BLANKLINE
 vim.opt.list = true
