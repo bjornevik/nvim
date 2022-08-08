@@ -47,6 +47,9 @@ telescope.setup {
         ["<C-q>"] = actions.send_to_qflist,
       },
     },
+    preview = {
+      treesitter = false,
+    },
   },
   pickers = {
     buffers = {
