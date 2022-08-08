@@ -35,9 +35,3 @@ vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
 -- Disable Command history & EX mode
 vim.keymap.set("n", "q:", ":q", { noremap = true })
 vim.keymap.set("n", "Q", ":q", { noremap = true })
-
--- make HJKl behave better for navigation
-vim.keymap.set({ "n", "x" }, "H", "^", { noremap = true })
-vim.keymap.set({ "n", "x" }, "J", "<C-d>", { noremap = true })
-vim.keymap.set({ "n", "x" }, "K", "<C-u>", { noremap = true })
-vim.keymap.set({ "n", "x" }, "L", "$", { noremap = true })

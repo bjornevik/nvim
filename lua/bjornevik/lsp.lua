@@ -8,7 +8,7 @@ local on_attach = function(client)
   local pop_opts = { border = "rounded", max_width = 80 }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, { buffer = 0 })
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
   vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", { buffer = 0 })
   vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
@@ -188,10 +188,10 @@ vim.keymap.set("n", "<C-q>", ":TroubleToggle quickfix<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader>q", ":TroubleToggle document_diagnostics<CR>", { noremap = true })
 
-vim.keymap.set("n", "<C-n>", function()
+vim.keymap.set("n", "<C-j>", function()
   require("trouble").next { skip_groups = true, jump = true }
 end, { noremap = true })
 
-vim.keymap.set("n", "<C-p>", function()
+vim.keymap.set("n", "<C-k>", function()
   require("trouble").previous { skip_groups = true, jump = true }
 end, { noremap = true })
