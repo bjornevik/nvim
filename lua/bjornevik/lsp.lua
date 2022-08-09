@@ -90,9 +90,18 @@ require("flutter-tools").setup {
 
 require("rust-tools").setup {
   server = {
+    standalone = true,
     on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+    -- capabilities = capabilities,
+    -- cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+  },
+  dap = {
+    adapter = {
+      type = "executable",
+      -- command = "lldb-vscode",
+      command = "/usr/local/Cellar/llvm/14.0.6_1/bin/lldb-vscode",
+      name = "rt_lldb",
+    },
   },
 }
 
