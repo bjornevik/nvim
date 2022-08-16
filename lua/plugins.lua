@@ -51,6 +51,12 @@ return packer.startup(function(use)
   }
 
   use "neovim/nvim-lspconfig"
+  use {
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup {}
+    end,
+  }
   use "Neevash/awesome-flutter-snippets"
   use "dart-lang/dart-vim-plugin"
   use "akinsho/flutter-tools.nvim"

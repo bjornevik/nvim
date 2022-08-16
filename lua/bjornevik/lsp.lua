@@ -19,6 +19,7 @@ local on_attach = function(client)
   vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
   vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = 0 })
+  vim.keymap.set("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { buffer = 0 })
 
   if client.server_capabilities.codeLensProvider then
     vim.api.nvim_create_augroup("lsp_document_codelens", {})
