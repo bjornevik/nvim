@@ -91,7 +91,6 @@ return packer.startup(function(use)
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "windwp/nvim-ts-autotag"
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "ziontee113/syntax-tree-surfer"
   use {
     "danymat/neogen",
     config = function()
