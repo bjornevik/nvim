@@ -21,6 +21,10 @@ local on_attach = function(client)
   vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = 0 })
   vim.keymap.set("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { buffer = 0 })
 
+  if client.server_capabilities.colorProvider then
+    require("document-color").buf_attach(bufnr)
+  end
+
   if client.server_capabilities.codeLensProvider then
     vim.api.nvim_create_augroup("lsp_document_codelens", {})
     vim.api.nvim_create_autocmd("BufEnter", {
@@ -44,6 +48,11 @@ local on_attach = function(client)
   end
 end
 
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.colorProvier = {
+  dynamicRegistration = true,
+}
+
 require("lsp_signature").setup {
   floating_window = false,
   floating_window_above_cur_lines = true,
@@ -51,7 +60,6 @@ require("lsp_signature").setup {
   always_trigger = true,
 }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.gopls.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.pyright.setup { on_attach = on_attach, capabilities = capabilities }

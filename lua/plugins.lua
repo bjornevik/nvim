@@ -50,6 +50,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- lsp
   use "neovim/nvim-lspconfig"
   use {
     "simrat39/symbols-outline.nvim",
@@ -60,6 +61,7 @@ return packer.startup(function(use)
   use "Neevash/awesome-flutter-snippets"
   use "dart-lang/dart-vim-plugin"
   use "akinsho/flutter-tools.nvim"
+  use "mrshmllow/document-color.nvim"
 
   use "simrat39/rust-tools.nvim"
   use "ray-x/lsp_signature.nvim"
