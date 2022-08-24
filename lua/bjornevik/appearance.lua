@@ -1,5 +1,6 @@
 -- Colorscheme
-vim.cmd.colorscheme "nord"
+-- vim.cmd.colorscheme "nord"
+require("nordic").colorscheme {}
 
 -- LUALINE
 require("lualine").setup {
