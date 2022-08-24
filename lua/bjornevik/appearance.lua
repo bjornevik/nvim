@@ -1,11 +1,10 @@
 -- Colorscheme
-vim.cmd.colorscheme "material"
+vim.cmd.colorscheme "nord"
 
 -- LUALINE
-
 require("lualine").setup {
   options = {
-    theme = "material",
+    theme = "nord",
     globalstatus = true,
   },
   sections = {

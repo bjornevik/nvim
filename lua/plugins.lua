@@ -108,7 +108,7 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
 
   -- Appearance
-  use "marko-cerovac/material.nvim"
+  use "shaunsingh/nord.nvim"
   use "goolord/alpha-nvim"
 
   use "lukas-reineke/indent-blankline.nvim"
