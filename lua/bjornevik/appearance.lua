@@ -1,11 +1,10 @@
 -- Colorscheme
--- vim.cmd.colorscheme "nord"
-require("nordic").colorscheme {}
+vim.cmd.colorscheme "nordfox"
 
 -- LUALINE
 require("lualine").setup {
   options = {
-    theme = "nord",
+    theme = "nordfox",
     globalstatus = true,
   },
   sections = {
