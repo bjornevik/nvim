@@ -1,9 +1,5 @@
-require("lightspeed").setup {
-  ignore_case = false,
-  jump_to_unique_chars = true,
-  exit_after_idle_msecs = { labeled = nil, unlabeled = 1000 },
-  repeat_ft_with_target_char = true,
-}
+require("leap").set_default_keymaps()
+require("flit").setup {}
 
 local smart_splits, _ = pcall(require, "smart-splits")
 if smart_splits then
