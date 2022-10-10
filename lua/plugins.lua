@@ -125,4 +125,7 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-dap.nvim"
   use "leoluz/nvim-dap-go"
   use "mfussenegger/nvim-dap"
+
+  -- FOLDS
+  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 end)
