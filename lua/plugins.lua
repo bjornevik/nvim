@@ -66,7 +66,7 @@ return packer.startup(function(use)
 
   use "simrat39/rust-tools.nvim"
   use "ray-x/lsp_signature.nvim"
-  use "folke/lua-dev.nvim"
+  use "folke/neodev.nvim"
   use "kyazdani42/nvim-web-devicons"
   use "folke/trouble.nvim"
   use {
