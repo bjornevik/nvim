@@ -12,7 +12,7 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
 
   -- Movement
-  use "ggandor/leap.nvim"
+  use { "ggandor/leap.nvim", requires = "tpope/vim-repeat" }
   use "ggandor/flit.nvim"
 
   -- Git
