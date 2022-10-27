@@ -109,7 +109,8 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
 
   -- Appearance
-  use "EdenEast/nightfox.nvim"
+  -- use "EdenEast/nightfox.nvim"
+  use "luisiacc/gruvbox-baby"
   use "goolord/alpha-nvim"
 
   use "lukas-reineke/indent-blankline.nvim"

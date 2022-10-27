@@ -1,10 +1,10 @@
 -- Colorscheme
-vim.cmd.colorscheme "nordfox"
+vim.cmd.colorscheme "gruvbox-baby"
 
 -- LUALINE
 require("lualine").setup {
   options = {
-    theme = "nordfox",
+    theme = "gruvbox-baby",
     globalstatus = true,
   },
   sections = {
