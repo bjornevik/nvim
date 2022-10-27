@@ -1,3 +1,8 @@
+local has_neodev, neodev = pcall(require, "neodev")
+if has_neodev then
+  neodev.setup {}
+end
+
 local has_lspconfig, lspconfig = pcall(require, "lspconfig")
 if not has_lspconfig then
   return
@@ -114,28 +119,18 @@ require("rust-tools").setup {
   },
 }
 
--- lua specific setup
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-local luadev = require("neodev").setup {
-  lspconfig = {
-    on_attach = on_attach,
-    capabilities = capabilities,
+-- neodev for lua
+if has_neodev then
+  lspconfig.sumneko_lua.setup {
     settings = {
       Lua = {
-        runtime = {
-          version = "LuaJIT",
-        },
-        path = runtime_path,
-        diagnostics = {
-          globals = { "vim" },
+        completion = {
+          callSnippet = "Replace",
         },
       },
     },
-  },
-}
-require("lspconfig").sumneko_lua.setup(luadev)
+  }
+end
 
 -- tsserver specific setup
 -- https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
