@@ -20,6 +20,10 @@ require("gitsigns").setup {
 -- neogit
 local neogit, _ = pcall(require, "neogit")
 if neogit then
-  require("neogit").setup {}
+  require("neogit").setup {
+    integrations = {
+      diffview = true,
+    },
+  }
   vim.keymap.set("n", "<leader>gs", require("neogit").open, { noremap = true })
 end

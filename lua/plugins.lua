@@ -17,6 +17,7 @@ return packer.startup(function(use)
 
   -- Git
   use "TimUntersberger/neogit"
+  use "sindrets/diffview.nvim"
   use "nvim-lua/plenary.nvim"
   use "lewis6991/gitsigns.nvim"
 
