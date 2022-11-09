@@ -17,6 +17,15 @@ require("gitsigns").setup {
   end,
 }
 
+--diffview
+require("diffview").setup {
+  view = {
+    merge_tool = {
+      layout = "diff3_mixed",
+    },
+  },
+}
+
 -- neogit
 local neogit, _ = pcall(require, "neogit")
 if neogit then
