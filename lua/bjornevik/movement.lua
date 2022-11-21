@@ -1,3 +1,4 @@
+require("leap").add_default_mappings() -- true argument for overwriting existing mappings
 require("leap").set_default_keymaps()
 require("flit").setup {}
 
