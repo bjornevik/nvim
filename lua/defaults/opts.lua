@@ -21,8 +21,13 @@ vim.opt.smartindent = true
 vim.opt.encoding = "utf-8"
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
+if vim.g.vscode then
+  vim.opt.cursorline = false
+  vim.opt.cursorline = false
+else
+  vim.opt.cursorline = true
+  vim.opt.cursorcolumn = true
+end
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
