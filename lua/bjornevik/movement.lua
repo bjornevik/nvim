@@ -1,5 +1,14 @@
-require("leap").add_default_mappings() -- true argument for overwriting existing mappings
-require("leap").set_default_keymaps()
+-- require("leap").add_default_mappings() -- true argument for overwriting existing mappings
+vim.keymap.set("n", "s", "<Plug>(leap-forward)", { noremap = true })
+vim.keymap.set("n", "S", "<Plug>(leap-backward)", { noremap = true })
+vim.keymap.set("x", "s", "<Plug>(leap-forward)", { noremap = true })
+vim.keymap.set("x", "gs", "<Plug>(leap-backward)", { noremap = true })
+vim.keymap.set("x", "x", "<Plug>(leap-forward-x)", { noremap = true })
+vim.keymap.set("x", "X", "<Plug>(leap-backward-x)", { noremap = true })
+vim.keymap.set("n", "gS", "<Plug>(leap-forward-cross-window)", { noremap = true })
+vim.keymap.set("x", "gS", "<Plug>(leap-forward-cross-window)", { noremap = true })
+vim.keymap.set("o", "gS", "<Plug>(leap-forward-cross-window)", { noremap = true })
+
 require("flit").setup {}
 
 local smart_splits, _ = pcall(require, "smart-splits")
