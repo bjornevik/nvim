@@ -11,6 +11,8 @@ vim.keymap.set("o", "gS", "<Plug>(leap-forward-cross-window)", { noremap = true 
 
 require("flit").setup {}
 
+require("leap-spooky").setup {}
+
 local smart_splits, _ = pcall(require, "smart-splits")
 if smart_splits then
   -- resize splits

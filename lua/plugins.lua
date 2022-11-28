@@ -14,6 +14,7 @@ return packer.startup(function(use)
   -- Movement
   use { "ggandor/leap.nvim", requires = "tpope/vim-repeat" }
   use "ggandor/flit.nvim"
+  use "ggandor/leap-spooky.nvim"
 
   -- Git
   use "TimUntersberger/neogit"
