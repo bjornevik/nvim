@@ -36,16 +36,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close {}
 end
-
--- Language specific setup
-require("dap-go").setup()
-
-vim.keymap.set("n", "<leader>td", function()
-  if vim.bo.filetype == "go" then
-    require("dap-go").debug_test()
-  end
-  -- if vim.bo.filetype == "rust" then
-  --
-  -- end
-  vim.notify "debug_test not configured for this language"
-end)

@@ -33,7 +33,6 @@ return packer.startup(function(use)
   }
   use "mrjones2014/smart-splits.nvim"
   use "ThePrimeagen/refactoring.nvim"
-
   use "numToStr/Comment.nvim"
   use {
     "sbdchd/neoformat",
@@ -53,22 +52,14 @@ return packer.startup(function(use)
     end,
   }
 
+  -- mason
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+
   -- lsp
   use "neovim/nvim-lspconfig"
-  use {
-    "simrat39/symbols-outline.nvim",
-    config = function()
-      require("symbols-outline").setup {}
-    end,
-  }
-  use "Neevash/awesome-flutter-snippets"
-  use "dart-lang/dart-vim-plugin"
-  use "akinsho/flutter-tools.nvim"
   use "mrshmllow/document-color.nvim"
-
-  use "simrat39/rust-tools.nvim"
   use "ray-x/lsp_signature.nvim"
-  use "folke/neodev.nvim"
   use "kyazdani42/nvim-web-devicons"
   use "folke/trouble.nvim"
   use {
@@ -77,6 +68,14 @@ return packer.startup(function(use)
       require("fidget").setup {}
     end,
   }
+
+  -- language specific plugins
+  use "simrat39/rust-tools.nvim"
+  use "folke/neodev.nvim"
+  use "Neevash/awesome-flutter-snippets"
+  use "dart-lang/dart-vim-plugin"
+  use "akinsho/flutter-tools.nvim"
+  use "marilari88/twoslash-queries.nvim"
 
   -- Autocomplete
   use "hrsh7th/cmp-nvim-lsp"
@@ -92,7 +91,6 @@ return packer.startup(function(use)
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use "nvim-treesitter/playground"
-  -- use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   -- use "windwp/nvim-ts-autotag"
   use "bjornevik/nvim-ts-autotag"
@@ -112,8 +110,7 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
 
   -- Appearance
-  -- use "EdenEast/nightfox.nvim"
-  use "luisiacc/gruvbox-baby"
+  use { "luisiacc/gruvbox-baby" }
   use "goolord/alpha-nvim"
 
   use "lukas-reineke/indent-blankline.nvim"

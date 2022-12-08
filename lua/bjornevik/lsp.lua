@@ -24,7 +24,6 @@ local on_attach = function(client)
   vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
   vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = 0 })
-  vim.keymap.set("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { buffer = 0 })
 
   if client.server_capabilities.colorProvider then
     require("document-color").buf_attach(bufnr)
@@ -66,13 +65,10 @@ require("lsp_signature").setup {
 }
 
 lspconfig.gopls.setup { on_attach = on_attach, capabilities = capabilities }
-lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities }
-lspconfig.pyright.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.vimls.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.astro.setup {}
 lspconfig.tailwindcss.setup { on_attach = on_attach, capabilities = capabilities }
-lspconfig.hls.setup { on_attach = on_attach, capabilities = capabilities }
 require("flutter-tools").setup {
   lsp = {
     on_attach = function()
@@ -154,8 +150,13 @@ local function filterReactDTS(value)
   return string.match(value.uri, "react/index.d.ts") == nil
 end
 
+local function ts_on_attach(client, bufnr)
+  require("twoslash-queries").attach(client, bufnr)
+  on_attach(client)
+end
+
 lspconfig.tsserver.setup {
-  on_attach = on_attach,
+  on_attach = ts_on_attach,
   capabilities = capabilities,
   handlers = {
     ["textDocument/definition"] = function(err, result, method, ...)
