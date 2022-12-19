@@ -7,6 +7,8 @@ vim.keymap.set("n", "<leader>P", '"+P', { noremap = true })
 -- Keep it centered
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
 vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 
 -- Moving text
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { noremap = true })
@@ -33,5 +35,7 @@ vim.keymap.set("n", "<Backspace>", "<C-^>", { noremap = true })
 vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
 
 -- Disable Command history & EX mode
-vim.keymap.set("n", "q:", ":q", { noremap = true })
-vim.keymap.set("n", "Q", ":q", { noremap = true })
+vim.keymap.set("n", "Q", "<nop>", { noremap = true })
+
+-- Substitute under cursor
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true })
