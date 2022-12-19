@@ -49,6 +49,7 @@ require("nvim-treesitter.configs").setup {
     "gomod",
     "gowork",
     "graphql",
+    "help",
     "html",
     "javascript",
     "jsdoc",
@@ -64,7 +65,6 @@ require("nvim-treesitter.configs").setup {
     "vue",
     "yaml",
   },
-  -- ensure_installed = "all",
   rainbow = {
     enable = true,
     extended_mode = true,
