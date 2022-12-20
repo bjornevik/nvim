@@ -95,6 +95,7 @@ telescope.load_extension "flutter"
 telescope.load_extension "file_browser"
 require("refactoring").setup {}
 telescope.load_extension "refactoring"
+telescope.load_extension "undo"
 
 local M = {}
 M.search_dotfiles = function()
@@ -118,6 +119,7 @@ vim.keymap.set("n", "<leader>fws", telescope_builtin.lsp_workspace_symbols, { no
 vim.keymap.set("n", "<leader>fds", telescope_builtin.lsp_document_symbols, { noremap = true })
 
 vim.keymap.set("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
+vim.keymap.set("n", "<leader>tu", telescope.extensions.undo.undo, { noremap = true })
 vim.keymap.set("n", "<leader>vrc", M.search_dotfiles, { noremap = true })
 
 -- Plugin specific remaps
