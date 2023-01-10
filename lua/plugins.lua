@@ -40,6 +40,7 @@ return packer.startup(function(use)
       vim.keymap.set("n", "<leader>nf", ":Neoformat<CR>", { noremap = true })
     end,
   }
+  use "AckslD/nvim-neoclip.lua"
 
   -- Adds textobject for camelCase, kebab-case etc, civ, div
   use "kana/vim-textobj-user"
