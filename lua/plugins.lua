@@ -118,7 +118,7 @@ return packer.startup(function(use)
   use "stevearc/dressing.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "nvim-lualine/lualine.nvim"
-  use "p00f/nvim-ts-rainbow"
+  use "mrjones2014/nvim-ts-rainbow"
   use "akinsho/bufferline.nvim"
 
   -- DAP
