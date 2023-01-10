@@ -94,3 +94,7 @@ require("neogen").setup {
 }
 
 vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true })
+
+require("ts-node-action").setup {}
+
+vim.keymap.set("n", "<C-K>", require("ts-node-action").node_action, { desc = "Trigger Node Action" })

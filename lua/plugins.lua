@@ -95,6 +95,7 @@ return packer.startup(function(use)
   use "nvim-treesitter/nvim-treesitter-textobjects"
   -- use "windwp/nvim-ts-autotag"
   use "bjornevik/nvim-ts-autotag"
+  use "Ckolkey/ts-node-action"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use {
     "danymat/neogen",
