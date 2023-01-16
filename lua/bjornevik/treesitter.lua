@@ -16,10 +16,14 @@ require("nvim-treesitter.configs").setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_increamental = "grc",
-      node_decremental = "grm",
+      -- init_selection = "gnn",
+      -- node_incremental = "grn",
+      -- scope_increamental = "grc",
+      -- node_decremental = "grm",
+      init_selection = "<C-n>",
+      node_incremental = "<C-n>",
+      scope_incremental = "<C-s>",
+      node_decremental = "<C-p>",
     },
   },
   textobjects = {
@@ -97,4 +101,4 @@ vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true }
 
 require("ts-node-action").setup {}
 
-vim.keymap.set("n", "<C-K>", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+vim.keymap.set("n", "<Tab>", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
