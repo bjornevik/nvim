@@ -43,7 +43,7 @@ vim.opt.cmdheight = 2
 vim.opt.formatoptions:remove { "c", "r", "o" }
 vim.opt.colorcolumn = "80"
 vim.opt.splitright = true
-vim.opt.lazyredraw = true
+-- vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.shortmess:append "c"
