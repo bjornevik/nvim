@@ -113,10 +113,10 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
 
   -- Appearance
-  use { "folke/noice.nvim", requires = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-  } }
+  -- use { "folke/noice.nvim", requires = {
+  --   "MunifTanjim/nui.nvim",
+  --   "rcarriga/nvim-notify",
+  -- } }
   use "luisiacc/gruvbox-baby"
   use "goolord/alpha-nvim"
 
