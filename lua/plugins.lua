@@ -63,12 +63,6 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "kyazdani42/nvim-web-devicons"
   use "folke/trouble.nvim"
-  use {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup {}
-    end,
-  }
 
   -- language specific plugins
   use "simrat39/rust-tools.nvim"
