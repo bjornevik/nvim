@@ -199,9 +199,9 @@ lspSymbol("Information", " ")
 lspSymbol("Info", " ")
 
 -- Folke/Trouble.nvim
-vim.keymap.set("n", "<C-q>", ":TroubleToggle quickfix<CR>", { noremap = true })
+vim.keymap.set("n", "<C-q>", ":TroubleToggle quickfix<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>q", ":TroubleToggle document_diagnostics<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>q", ":TroubleToggle document_diagnostics<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-j>", function()
   require("trouble").next { skip_groups = true, jump = true }

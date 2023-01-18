@@ -11,10 +11,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 
 -- Moving text
-vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { noremap = true })
-vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { noremap = true })
-vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { noremap = true })
-vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { noremap = true })
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { noremap = true, silent = true })
 
 -- Undo Break points
 vim.keymap.set("i", ",", ",<C-g>u", { noremap = true })
@@ -32,7 +32,7 @@ vim.keymap.set("x", "g-", "g<C-x>", { noremap = true })
 vim.keymap.set("n", "<Backspace>", "<C-^>", { noremap = true })
 
 -- Execute macro over visual line selections
-vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true })
+vim.keymap.set("x", "Q", ":'<,'>:normal @q<CR>", { noremap = true, silent = true })
 
 -- Disable Command history & EX mode
 vim.keymap.set("n", "Q", "<nop>", { noremap = true })

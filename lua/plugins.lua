@@ -37,7 +37,7 @@ return packer.startup(function(use)
   use {
     "sbdchd/neoformat",
     config = function()
-      vim.keymap.set("n", "<leader>nf", ":Neoformat<CR>", { noremap = true })
+      vim.keymap.set("n", "<leader>nf", ":Neoformat<CR>", { noremap = true, silent = true })
     end,
   }
   use "AckslD/nvim-neoclip.lua"
