@@ -1,14 +1,14 @@
--- vim.o.foldcolumn = "1"
+vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = "1"
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.statuscolumn = "%s%=%l %{"
---   .. "foldlevel(v:lnum) > foldlevel(v:lnum - 1)"
---   .. "? foldclosed(v:lnum) == -1"
---   .. '? ""'
---   .. ': ""'
---   .. ':" "}'
+vim.o.statuscolumn = "%s%=%l %{"
+  .. "foldlevel(v:lnum) > foldlevel(v:lnum - 1)"
+  .. "? foldclosed(v:lnum) == -1"
+  .. '? ""'
+  .. ': ""'
+  .. ':" "}'
 
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
