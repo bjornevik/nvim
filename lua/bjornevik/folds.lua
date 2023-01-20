@@ -3,7 +3,7 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = "1"
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.statuscolumn = "%s%=%l %{"
+vim.o.statuscolumn = "%s%=%l %#FoldColumn#%{"
   .. "foldlevel(v:lnum) > foldlevel(v:lnum - 1)"
   .. "? foldclosed(v:lnum) == -1"
   .. '? ""'
