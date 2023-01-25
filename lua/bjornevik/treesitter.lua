@@ -103,6 +103,10 @@ require("neogen").setup {
 
 vim.keymap.set("n", "<leader>ng", require("neogen").generate, { noremap = true })
 
-require("ts-node-action").setup {}
+require("ts-node-action").setup {
+  vue = {
+    ["attribute_value"] = require("ts-node-action.actions").conceal_string(),
+  },
+}
 
 vim.keymap.set("n", "<Tab>", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
