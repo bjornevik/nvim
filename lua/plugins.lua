@@ -41,6 +41,7 @@ return packer.startup(function(use)
     end,
   }
   use "AckslD/nvim-neoclip.lua"
+  use "cshuaimin/ssr.nvim"
 
   -- Adds textobject for camelCase, kebab-case etc, civ, div
   use "kana/vim-textobj-user"
