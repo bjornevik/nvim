@@ -46,13 +46,6 @@ return packer.startup(function(use)
   use "kana/vim-textobj-user"
   use "Julian/vim-textobj-variable-segment"
 
-  use {
-    "andrewferrier/textobj-diagnostic.nvim",
-    config = function()
-      require("textobj-diagnostic").setup {}
-    end,
-  }
-
   -- mason
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
