@@ -1,8 +1,7 @@
--- require("leap").add_default_mappings() -- true argument for overwriting existing mappings
 vim.keymap.set("n", "s", "<Plug>(leap-forward)", { noremap = true })
 vim.keymap.set("n", "S", "<Plug>(leap-backward)", { noremap = true })
-vim.keymap.set("x", "s", "<Plug>(leap-forward)", { noremap = true })
-vim.keymap.set("x", "gs", "<Plug>(leap-backward)", { noremap = true })
+vim.keymap.set("o", "x", "<Plug>(leap-forward)", { noremap = true })
+vim.keymap.set("o", "X", "<Plug>(leap-backward)", { noremap = true })
 vim.keymap.set("x", "x", "<Plug>(leap-forward-x)", { noremap = true })
 vim.keymap.set("x", "X", "<Plug>(leap-backward-x)", { noremap = true })
 vim.keymap.set("n", "gS", "<Plug>(leap-forward-cross-window)", { noremap = true })
