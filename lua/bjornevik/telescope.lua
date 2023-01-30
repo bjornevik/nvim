@@ -31,8 +31,8 @@ telescope.setup {
     file_ignore_patterns = {
       "undodir/.*",
       "node_modules/.*",
-      "android/.*",
-      "ios/.*",
+      -- "android/.*",
+      -- "ios/.*",
       ".git/.*",
       ".dart_tool/.*",
       "debug/.*",
