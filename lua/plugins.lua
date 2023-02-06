@@ -55,7 +55,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"
   use "mrshmllow/document-color.nvim"
   use "ray-x/lsp_signature.nvim"
-  use "kyazdani42/nvim-web-devicons"
+  use "nvim-tree/nvim-web-devicons"
   use "folke/trouble.nvim"
 
   -- language specific plugins
