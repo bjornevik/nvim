@@ -1,21 +1,14 @@
-vim.o.foldcolumn = "1"
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = "1"
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.statuscolumn = "%s%=%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):''} %#FoldColumn#%{"
-  .. "foldlevel(v:lnum) > foldlevel(v:lnum - 1)"
-  .. "? foldclosed(v:lnum) == -1"
-  .. '? ""'
-  .. ': ""'
-  .. ':" "}'
+local has_ufo, ufo = pcall(require, "ufo")
+if not has_ufo then
+  return
+end
 
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
+vim.keymap.set("n", "zR", ufo.openAllFolds)
+vim.keymap.set("n", "zM", ufo.closeAllFolds)
+vim.keymap.set("n", "zr", ufo.openFoldsExceptKinds)
+vim.keymap.set("n", "zm", ufo.closeFoldsWith)
 vim.keymap.set("n", "zk", function()
-  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  local winid = ufo.peekFoldedLinesUnderCursor()
   if not winid then
     vim.lsp.buf.hover()
   end
@@ -49,7 +42,7 @@ local virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-require("ufo").setup {
+ufo.setup {
   provider_selector = function(bufnr, filetype, buftype)
     return { "treesitter", "indent" }
   end,
@@ -59,4 +52,4 @@ require("ufo").setup {
 -- buffer scope handler
 -- will override global handler if it is existed
 local bufnr = vim.api.nvim_get_current_buf()
-require("ufo").setFoldVirtTextHandler(bufnr, virt_text_handler)
+ufo.setFoldVirtTextHandler(bufnr, virt_text_handler)

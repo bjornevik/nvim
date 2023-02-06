@@ -29,7 +29,7 @@ vim.keymap.set({ "i", "s" }, "<c-l>", function()
 end)
 
 -- shortcut to source my luasnips file again, which will reload my snippets
-vim.keymap.set("n", "<leader><leader>s", ":source ~/.config/nvim/lua/bjornevik/luasnip.lua<CR>", { silent = true })
+vim.keymap.set("n", "<leader><leader>s", ":source ~/.config/nvim/after/plugin/luasnip.lua<CR>", { silent = true })
 
 ls.config.set_config {
   history = true,
@@ -73,5 +73,5 @@ ls.add_snippets("lua", {
   ),
 })
 
-require "bjornevik.snippets.vue"
-require "bjornevik.snippets.rust"
+require "snippets"
+require "snippets"

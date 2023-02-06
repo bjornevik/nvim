@@ -43,9 +43,25 @@ vim.opt.cmdheight = 2
 vim.opt.formatoptions:remove { "c", "r", "o" }
 vim.opt.colorcolumn = "80"
 vim.opt.splitright = true
--- vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.shortmess:append "c"
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 vim.opt.signcolumn = "yes"
+-- FOLDS, see after/plugin/ufo.lua
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = "1"
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.statuscolumn = "%s%=%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):''} %#FoldColumn#%{"
+  .. "foldlevel(v:lnum) > foldlevel(v:lnum - 1)"
+  .. "? foldclosed(v:lnum) == -1"
+  .. '? ""'
+  .. ': ""'
+  .. ':" "}'
+-- LISTCHARS, see after/plugin/indent-blankline.lua
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "tab:» "
+vim.opt.listchars:append "trail:~"
