@@ -150,13 +150,8 @@ local function filterReactDTS(value)
   return string.match(value.targetUri, "react/index.d.ts") == nil
 end
 
-local function ts_on_attach(client, bufnr)
-  require("twoslash-queries").attach(client, bufnr)
-  on_attach(client)
-end
-
 lspconfig.tsserver.setup {
-  on_attach = ts_on_attach,
+  on_attach = on_attach,
   capabilities = capabilities,
   handlers = {
     ["textDocument/definition"] = function(err, result, method, ...)

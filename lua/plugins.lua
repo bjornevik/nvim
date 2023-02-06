@@ -64,7 +64,6 @@ return packer.startup(function(use)
   use "Neevash/awesome-flutter-snippets"
   use "dart-lang/dart-vim-plugin"
   use "akinsho/flutter-tools.nvim"
-  use "marilari88/twoslash-queries.nvim"
 
   -- Autocomplete
   use "hrsh7th/cmp-nvim-lsp"
