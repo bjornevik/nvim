@@ -1,129 +1,164 @@
-local packer = require "packer"
-
-packer.init {
-  max_jobs = 8,
-  git = {
-    default_url_format = "git@github.com:%s",
+return {
+  -- Colorscheme
+  {
+    "luisiacc/gruvbox-baby",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_baby_use_original_palette = true
+      vim.cmd.colorscheme "gruvbox-baby"
+    end,
   },
-}
-
-return packer.startup(function(use)
-  use "wbthomason/packer.nvim"
-  use "lewis6991/impatient.nvim"
 
   -- Movement
-  use { "ggandor/leap.nvim", requires = "tpope/vim-repeat" }
-  use "ggandor/flit.nvim"
-  use "ggandor/leap-spooky.nvim"
+  {
+    "ggandor/leap.nvim",
+    dependencies = {
+      "tpope/vim-repeat",
+      "ggandor/flit.nvim",
+      "ggandor/leap-spooky.nvim",
+    },
+  },
+
+  { "nvim-lua/plenary.nvim" },
 
   -- Git
-  use "TimUntersberger/neogit"
-  use "sindrets/diffview.nvim"
-  use "nvim-lua/plenary.nvim"
-  use "lewis6991/gitsigns.nvim"
+  { "TimUntersberger/neogit" },
+  { "sindrets/diffview.nvim" },
+  { "lewis6991/gitsigns.nvim" },
 
   -- Utilty
-  use "windwp/nvim-autopairs"
-  use "wellle/targets.vim"
-  use {
+  { "windwp/nvim-autopairs" },
+  { "wellle/targets.vim" },
+  {
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup {}
     end,
-  }
-  use "mrjones2014/smart-splits.nvim"
-  use "ThePrimeagen/refactoring.nvim"
-  use "numToStr/Comment.nvim"
-  use {
+  },
+  { "mrjones2014/smart-splits.nvim" },
+  { "ThePrimeagen/refactoring.nvim" },
+  { "numToStr/Comment.nvim" },
+  {
     "sbdchd/neoformat",
-    config = function()
+    init = function()
       vim.keymap.set("n", "<leader>nf", ":Neoformat<CR>", { noremap = true, silent = true })
     end,
-  }
-  use "AckslD/nvim-neoclip.lua"
-  use "cshuaimin/ssr.nvim"
+  },
+  {
+    "AckslD/nvim-neoclip.lua",
+    init = function()
+      vim.keymap.set("n", "<leader>nc", require("telescope").extensions.neoclip.neoclip, { noremap = true })
+    end,
+    opts = {
+      keys = {
+        telescope = {
+          i = {
+            paste = "<cr>",
+          },
+        },
+      },
+    },
+  },
+  {
+    "cshuaimin/ssr.nvim",
+    init = function()
+      vim.keymap.set({ "n", "x" }, "<leader>sr", function()
+        require("ssr").open()
+      end, { desc = "Structural Replace" })
+    end,
+  },
 
   -- Adds textobject for camelCase, kebab-case etc, civ, div
-  use "kana/vim-textobj-user"
-  use "Julian/vim-textobj-variable-segment"
+  { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user" },
 
   -- mason
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
 
   -- lsp
-  use "neovim/nvim-lspconfig"
-  use "mrshmllow/document-color.nvim"
-  use "ray-x/lsp_signature.nvim"
-  use "nvim-tree/nvim-web-devicons"
-  use "folke/trouble.nvim"
+  { "neovim/nvim-lspconfig" },
+  { "mrshmllow/document-color.nvim" },
+  { "ray-x/lsp_signature.nvim" },
+  { "nvim-tree/nvim-web-devicons" },
+  { "folke/trouble.nvim" },
 
   -- language specific plugins
-  use "simrat39/rust-tools.nvim"
-  use "folke/neodev.nvim"
-  use "Neevash/awesome-flutter-snippets"
-  use "dart-lang/dart-vim-plugin"
-  use "akinsho/flutter-tools.nvim"
+  { "simrat39/rust-tools.nvim" },
+  { "folke/neodev.nvim" },
+  { "Neevash/awesome-flutter-snippets" },
+  { "dart-lang/dart-vim-plugin" },
+  { "akinsho/flutter-tools.nvim" },
 
   -- Autocomplete
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-nvim-lua"
-  use "onsails/lspkind-nvim"
-  use "rafamadriz/friendly-snippets"
-  use "L3MON4D3/LuaSnip"
-  use "saadparwaiz1/cmp_luasnip"
-  use "hrsh7th/nvim-cmp"
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-nvim-lua" },
+  { "onsails/lspkind-nvim" },
+  { "rafamadriz/friendly-snippets" },
+  { "L3MON4D3/LuaSnip" },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "hrsh7th/nvim-cmp" },
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-  use "nvim-treesitter/playground"
-  use "nvim-treesitter/nvim-treesitter-textobjects"
-  -- use "windwp/nvim-ts-autotag"
-  use "bjornevik/nvim-ts-autotag"
-  use "Ckolkey/ts-node-action"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use {
-    "danymat/neogen",
-    config = function()
-      require("neogen").setup {}
-    end,
-  }
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/playground",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "bjornevik/nvim-ts-autotag",
+      "Ckolkey/ts-node-action",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      {
+        "danymat/neogen",
+        config = function()
+          require("neogen").setup {}
+        end,
+      },
+    },
+  },
 
   -- Telescope
-  use "nvim-telescope/telescope-fzy-native.nvim"
-  use "nvim-telescope/telescope-file-browser.nvim"
-  use "nvim-telescope/telescope.nvim"
-  use "debugloop/telescope-undo.nvim"
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "debugloop/telescope-undo.nvim",
+      "nvim-telescope/telescope-dap.nvim",
+    },
+  },
 
-  use "ThePrimeagen/harpoon"
+  { "ThePrimeagen/harpoon" },
 
   -- Appearance
-  use {
+  {
     "folke/noice.nvim",
-    requires = {
+    dependencies = {
       "MunifTanjim/nui.nvim",
-      -- "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify",
     },
-  }
-  use "luisiacc/gruvbox-baby"
-  use "goolord/alpha-nvim"
+  },
+  { "goolord/alpha-nvim" },
 
-  use "lukas-reineke/indent-blankline.nvim"
-  use "stevearc/dressing.nvim"
-  use "norcalli/nvim-colorizer.lua"
-  use "nvim-lualine/lualine.nvim"
-  use "mrjones2014/nvim-ts-rainbow"
-  use "akinsho/bufferline.nvim"
+  { "lukas-reineke/indent-blankline.nvim" },
+  { "stevearc/dressing.nvim" },
+  { "norcalli/nvim-colorizer.lua" },
+  { "nvim-lualine/lualine.nvim" },
+  { "mrjones2014/nvim-ts-rainbow" },
+  { "akinsho/bufferline.nvim" },
 
   -- DAP
-  use "rcarriga/nvim-dap-ui"
-  use "theHamsta/nvim-dap-virtual-text"
-  use "nvim-telescope/telescope-dap.nvim"
-  use "leoluz/nvim-dap-go"
-  use "mfussenegger/nvim-dap"
+  { "rcarriga/nvim-dap-ui" },
+  { "theHamsta/nvim-dap-virtual-text" },
+  { "leoluz/nvim-dap-go" },
+  { "mfussenegger/nvim-dap" },
 
   -- FOLDS
-  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
-end)
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+  },
+}
