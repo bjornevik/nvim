@@ -20,7 +20,7 @@
   "gruvbox-baby": { "branch": "main", "commit": "03c525c6462d51a8b593e4aa3dcd2be2aa8b59ac" },
   "harpoon": { "branch": "master", "commit": "8c0bb0a328e57278f4783bb0e2ea32f296d36db1" },
   "indent-blankline.nvim": { "branch": "master", "commit": "8299fe7703dfff4b1752aeed271c3b95281a952d" },
-  "lazy.nvim": { "branch": "main", "commit": "0dcc9071dfc98a3b9ea2585019073fb90a84a616" },
+  "lazy.nvim": { "branch": "main", "commit": "48c9b37294f31e3875435bca41d0c923fdd6eea4" },
   "leap-spooky.nvim": { "branch": "main", "commit": "748b2614e859704d8004e86be97401c9f3e28e80" },
   "leap.nvim": { "branch": "main", "commit": "f565a9c4d92245d8b619235bebeaa73cc38aa40e" },
   "lsp_signature.nvim": { "branch": "master", "commit": "6f6252f63b0baf0f2224c4caea33819a27f3f550" },
