@@ -15,15 +15,21 @@ It uses the wbthomason/packer.nvim package manager.
 
 I use <space> as my leader key.
 --]]
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+
 vim.g.mapleader = " "
 
-pcall(require, "impatient")
-
-require "plugins"
-
--- COLORSCHEME
-vim.g.gruvbox_baby_use_original_palette = true
-vim.cmd.colorscheme "gruvbox-baby"
-
+require("lazy").setup("plugins")
 require "defaults"
 require "bjornevik"

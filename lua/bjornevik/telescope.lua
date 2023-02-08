@@ -96,15 +96,6 @@ telescope.load_extension "file_browser"
 require("refactoring").setup {}
 telescope.load_extension "refactoring"
 telescope.load_extension "undo"
-require("neoclip").setup {
-  keys = {
-    telescope = {
-      i = {
-        paste = "<cr>",
-      },
-    },
-  },
-}
 telescope.load_extension "neoclip"
 
 local M = {}
@@ -130,7 +121,6 @@ vim.keymap.set("n", "<leader>fds", telescope_builtin.lsp_document_symbols, { nor
 
 vim.keymap.set("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
 vim.keymap.set("n", "<leader>tu", telescope.extensions.undo.undo, { noremap = true })
-vim.keymap.set("n", "<leader>nc", telescope.extensions.neoclip.neoclip, { noremap = true })
 vim.keymap.set("n", "<leader>vrc", M.search_dotfiles, { noremap = true })
 
 -- Plugin specific remaps
