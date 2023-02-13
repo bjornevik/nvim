@@ -8,6 +8,7 @@ require("mason-lspconfig").setup {
     "astro",
     "tailwindcss",
     "rust_analyzer",
+    "lua_ls",
   },
 }
 

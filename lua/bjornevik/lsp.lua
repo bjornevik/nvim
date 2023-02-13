@@ -118,7 +118,7 @@ require("rust-tools").setup {
 
 -- neodev for lua
 if has_neodev then
-  lspconfig.sumneko_lua.setup {
+  lspconfig.lua_ls.setup {
     settings = {
       Lua = {
         completion = {
