@@ -30,6 +30,11 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  -- updating all plugins simultaneously causes
+  -- `kex_exchange_identification: read connection reset by peer could not read from remote repository`
+  -- limiting concurrency seems to fix it 🤷
+  concurrency = 8,
+})
 require "defaults"
 require "bjornevik"
